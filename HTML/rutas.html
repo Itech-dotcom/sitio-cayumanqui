@@ -1,0 +1,344 @@
+<!--
+    Autor: Isaac Fernández
+    Fecha de creación: 27/07/2025
+    Última modificación: 14/03/2026
+    Página Puntos de Venta - Mapa interactivo de clientes
+-->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Puntos de Venta - Cayumanqui</title>
+    <link rel="icon" type="image/png" href="../Imagenes/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../CSS/rutas.css">
+</head>
+<body>
+
+    <!-- ── NAVBAR ── -->
+    <nav class="navbar navbar-expand-lg custom-navbar">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="../index.html">
+                <img src="../Imagenes/Logo.png" alt="Logo Cayumanqui" class="logo">
+                <span class="d-none d-md-inline">AGUAS CAYUMANQUI</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../index.html">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="productos.html">Catálogo</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="rutas.html">Puntos de Venta</a></li>
+                    <li class="nav-item"><a class="nav-link" href="nosotros.html">Acerca de Nosotros</a></li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://wa.me/56952281586" target="_blank">
+                            <i class="fab fa-whatsapp"></i> Contactar
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="navbar-wave">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 120" preserveAspectRatio="none">
+                <path fill="#F5F7FA" d="M0,96L60,90.7C120,85,240,75,360,74.7C480,75,600,85,720,96C840,107,960,117,1080,117.3C1200,117,1320,107,1380,101.3L1440,96L1440,120L1380,120C1320,120,1200,120,1080,120C960,120,840,120,720,120C600,120,480,120,360,120C240,120,120,120,60,120L0,120Z"/>
+            </svg>
+        </div>
+    </nav>
+
+    <!-- ── HERO ── -->
+    <section class="hero-rutas">
+        <div class="container">
+            <div class="col-12 text-center" data-aos="fade-up">
+                <span class="hero-badge"><i class="fas fa-map-location-dot"></i> 140 puntos de venta</span>
+                <h1 class="hero-title">¿Dónde comprar nuestra agua?</h1>
+                <p class="hero-subtitle">Encuentra el negocio más cercano a ti en las regiones de Ñuble y Biobío. Filtra por región o localidad y haz clic en el pin para ver los detalles.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── FILTROS ── -->
+    <section class="filtros-section">
+        <div class="container">
+            <div class="text-center mb-4" data-aos="fade-up">
+                <h2 class="section-title">Buscar un Punto de Venta</h2>
+                <p class="section-subtitle">Filtra por región, localidad o nombre del negocio</p>
+            </div>
+            <div class="filtros-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="row g-3 align-items-end">
+                    <div class="col-md-3">
+                        <label for="selRegion"><i class="fas fa-map me-1" style="color:#1E88E5"></i> Región</label>
+                        <select id="selRegion" class="form-select">
+                            <option value="">— Todas las regiones —</option>
+                            <option value="Ñuble">Ñuble</option>
+                            <option value="Biobío">Biobío</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="selLocalidad"><i class="fas fa-city me-1" style="color:#1E88E5"></i> Localidad</label>
+                        <select id="selLocalidad" class="form-select">
+                            <option value="">— Todas las localidades —</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="txtBuscar"><i class="fas fa-store me-1" style="color:#1E88E5"></i> Nombre del negocio</label>
+                        <div class="input-icon-wrap">
+                            <i class="fas fa-magnifying-glass"></i>
+                            <input type="text" id="txtBuscar" class="form-control" placeholder="Buscar negocio...">
+                        </div>
+                    </div>
+                    <div class="col-md-2 d-flex align-items-end">
+                        <button id="btnReset" class="btn-reset-filtros w-100">
+                            <i class="fas fa-rotate-left"></i> Limpiar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── MAPA ── -->
+    <section class="mapa-section">
+        <div class="container" data-aos="fade-up">
+            <div class="mapa-card">
+                <div class="mapa-card-header">
+                    <i class="fas fa-map-location-dot"></i>
+                    <span>Mapa de puntos de venta</span>
+                    <span class="mapa-count-badge" id="mapCount">140 locales</span>
+                </div>
+                <div id="map"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── LISTADO ── -->
+    <div class="listado-outer" style="position:relative">
+        <!-- Wave superior -->
+        <div style="position:absolute;top:0;left:0;width:100%;overflow:hidden;line-height:0;z-index:0">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 50" preserveAspectRatio="none" style="display:block;width:100%;height:38px">
+                <path fill="#ffffff" d="M0,25L60,23C120,21,240,18,360,18C480,18,600,21,720,25C840,29,960,33,1080,33C1200,33,1320,29,1380,27L1440,25L1440,0L0,0Z"/>
+            </svg>
+        </div>
+        <div class="container" style="position:relative;z-index:1">
+            <div class="text-center mb-4" data-aos="fade-up">
+                <h2 class="section-title">Listado de Negocios</h2>
+                <p class="section-subtitle">Haz clic en cualquier negocio para verlo en el mapa</p>
+            </div>
+            <div class="listado-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="listado-header">
+                    <span><i class="fas fa-list me-2"></i>Negocios encontrados</span>
+                    <span class="list-count-badge" id="listCount">140 locales</span>
+                </div>
+                <div class="listado-body" id="clientList"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ── CTA FINAL ── -->
+    <section class="cta-final-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8" data-aos="fade-right">
+                    <h2 class="cta-title">¿No encuentras un punto cerca?</h2>
+                    <p class="cta-text">Contáctanos directamente y te informamos la forma más cómoda de conseguir tu agua Cayumanqui</p>
+                </div>
+                <div class="col-lg-4 text-lg-end mt-4 mt-lg-0" data-aos="fade-left">
+                    <a href="https://wa.me/56952281586?text=Hola!%20Quiero%20hacer%20un%20pedido%20de%20agua%20purificada." class="btn-cta" target="_blank">
+                        <i class="fab fa-whatsapp"></i> Realizar Pedido
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── FOOTER ── -->
+    <footer>
+        <div class="footer-wave">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 120" preserveAspectRatio="none">
+                <path fill="#263238" d="M0,96L60,90.7C120,85,240,75,360,74.7C480,75,600,85,720,96C840,107,960,117,1080,117.3C1200,117,1320,107,1380,101.3L1440,96L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z"/>
+            </svg>
+        </div>
+        <div class="pie-pagina">
+            <div class="container py-5">
+                <div class="row g-4">
+                    <div class="col-md-4">
+                        <a href="../index.html"><img src="../Imagenes/Logo.png" alt="Logo Cayumanqui" class="logo-footer"></a>
+                        <p class="footer-text">Empresa dedicada a la distribución de agua purificada de alta calidad en las regiones de Bío Bío y Ñuble.</p>
+                        <div class="iconos-redes">
+                            <a href="https://www.facebook.com/agua.cayumanqui/?locale=es_LA" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                            <a href="https://www.instagram.com/aguas.cayumanqui?igsh=dnd5aXRhM2hydTFt" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                            <a href="https://wa.me/56952281586" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <h5>Enlaces Rápidos</h5>
+                        <ul class="footer-links">
+                            <li><a href="../index.html">Inicio</a></li>
+                            <li><a href="productos.html">Catálogo de Productos</a></li>
+                            <li><a href="rutas.html">Puntos de Venta</a></li>
+                            <li><a href="nosotros.html">Acerca de Nosotros</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4">
+                        <h5>Contacto</h5>
+                        <p class="footer-contact">
+                            <i class="fas fa-phone"></i> +569 52281586<br>
+                            <i class="fas fa-phone"></i> +569 21829290<br>
+                            <i class="fas fa-envelope"></i> aguasdelcayumanqui@gmail.com<br>
+                            <i class="fas fa-map-marker-alt"></i> Av. Bernardo O'higgins Poniente 1780, Quillón, Ñuble<br>
+                            <i class="fas fa-clock"></i> Lun-Vie 09:00-18:00 · Sáb 09:00-13:00<br>
+                            <i class="fas fa-certificate"></i> Res. Sanitaria: 2016439392
+                        </p>
+                    </div>
+                </div>
+                <hr class="footer-divider">
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <p class="footer-copyright">&copy; 2025 Aguas Cayumanqui. Todos los derechos reservados.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Botón WhatsApp Flotante -->
+    <a href="https://wa.me/56952281586?text=Hola!%20Quiero%20hacer%20un%20pedido%20de%20agua%20purificada." class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i> Realizar pedido
+    </a>
+
+    <!-- ── SCRIPTS ── -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <script>
+    // ── DATA ──────────────────────────────────────────────────────────────────
+    const CLIENTES = [{"nombre":"La Quinta","localidad":"Batuco","region":"Biobío","direccion":"","lat":-37.081906,"lng":-72.33805},{"nombre":"Cecinas Matias","localidad":"Bulnes","region":"Ñuble","direccion":"anibal pinto 59","lat":-36.73825,"lng":-72.287968},{"nombre":"Panaderia Ebenezer","localidad":"Bulnes","region":"Ñuble","direccion":"","lat":-36.733635,"lng":-72.283433},{"nombre":"Puntomarket","localidad":"Bulnes","region":"Ñuble","direccion":"","lat":-36.732078,"lng":-72.289331},{"nombre":"Ferreteria Magdalena","localidad":"Bulnes","region":"Ñuble","direccion":"carlos palacios 1407","lat":-36.736781,"lng":-72.289902},{"nombre":"Andreu","localidad":"Bulnes","region":"Ñuble","direccion":"carlos palacios 934","lat":-36.738814,"lng":-72.285146},{"nombre":"San Pedro","localidad":"Bulnes","region":"Ñuble","direccion":"","lat":-36.740735,"lng":-72.288212},{"nombre":"Esquina Del Ahorro","localidad":"Bulnes","region":"Ñuble","direccion":"eleuterio ramirez 997","lat":-36.734501,"lng":-72.284751},{"nombre":"Botilleria Botiprat","localidad":"Bulnes","region":"Ñuble","direccion":"","lat":-36.738796,"lng":-72.284307},{"nombre":"Panaderia Ebenezer","localidad":"Bulnes","region":"Ñuble","direccion":"","lat":-36.732906,"lng":-72.290135},{"nombre":"Uzziel","localidad":"Bulnes","region":"Ñuble","direccion":"carlos palacios 809","lat":-36.732942,"lng":-72.283219},{"nombre":"Vinos Portezuelo","localidad":"Bulnes","region":"Ñuble","direccion":"","lat":-36.737597,"lng":-72.288645},{"nombre":"Henry","localidad":"Cabrero","region":"Biobío","direccion":"","lat":-37.045028,"lng":-72.401834},{"nombre":"Supermercado Chabel","localidad":"Cerro Negro","region":"Biobío","direccion":"","lat":-37.120773,"lng":-72.320733},{"nombre":"Claudio Foodtruck","localidad":"Cerro Negro","region":"Biobío","direccion":"","lat":-37.113225,"lng":-72.315663},{"nombre":"Guido Cerro Negro","localidad":"Cerro Negro","region":"Biobío","direccion":"","lat":-37.113629,"lng":-72.314403},{"nombre":"Ferreteria Santa Elena","localidad":"Cerro Negro","region":"Biobío","direccion":"","lat":-37.116338,"lng":-72.311969},{"nombre":"El Casino","localidad":"Cerro Negro","region":"Biobío","direccion":"predio los chilcos, sector casino km 11","lat":-37.117915,"lng":-72.31618},{"nombre":"Rega E.I.R.L","localidad":"Coelemu","region":"Ñuble","direccion":"","lat":-36.507806,"lng":-72.699515},{"nombre":"El Magnifico","localidad":"Coelemu","region":"Ñuble","direccion":"","lat":-36.507483,"lng":-72.699926},{"nombre":"Fruteria","localidad":"Coelemu","region":"Ñuble","direccion":"","lat":-36.509054,"lng":-72.705242},{"nombre":"Donde Juanito","localidad":"Coelemu","region":"Ñuble","direccion":"","lat":-36.513821,"lng":-72.702806},{"nombre":"Danilo (Almacen Marina)","localidad":"Coelemu","region":"Ñuble","direccion":"","lat":-36.515302,"lng":-72.703372},{"nombre":"Carlitos","localidad":"Concepcion","region":"Biobío","direccion":"","lat":-36.82409,"lng":-73.06172},{"nombre":"Victoria","localidad":"Concepcion","region":"Biobío","direccion":"","lat":-36.818743,"lng":-73.060852},{"nombre":"Andretta","localidad":"Concepción","region":"Biobío","direccion":"","lat":-36.821398,"lng":-73.062405},{"nombre":"Rigo","localidad":"Concepción","region":"Biobío","direccion":"","lat":-36.82243,"lng":-73.055133},{"nombre":"Provisiones Colombina","localidad":"Cosmito","region":"Ñuble","direccion":"","lat":-36.79852,"lng":-72.448909},{"nombre":"Santa Catalina","localidad":"Coyanco","region":"Ñuble","direccion":"","lat":-36.819989,"lng":-72.397709},{"nombre":"Anita","localidad":"Dadinco","region":"Biobío","direccion":"","lat":-36.886666,"lng":-72.534505},{"nombre":"La Previa","localidad":"El Carmen","region":"Ñuble","direccion":"","lat":-37.011805,"lng":-72.3653},{"nombre":"El Diamante","localidad":"El Carmen","region":"Ñuble","direccion":"","lat":-37.016131,"lng":-72.364854},{"nombre":"La Economica","localidad":"El Carmen","region":"Ñuble","direccion":"","lat":-37.013271,"lng":-72.36394},{"nombre":"Las Tinajas","localidad":"El Carmen","region":"Ñuble","direccion":"","lat":-37.01941,"lng":-72.371379},{"nombre":"El Portal","localidad":"El Carmen","region":"Ñuble","direccion":"","lat":-37.018545,"lng":-72.369023},{"nombre":"Don Lay","localidad":"Florida","region":"Biobío","direccion":"LAS HORTENSIAS 1499","lat":-36.83829,"lng":-72.677571},{"nombre":"Donde Lucas","localidad":"Florida","region":"Biobío","direccion":"LAS HORTENSIAS 1512","lat":-36.831636,"lng":-72.683853},{"nombre":"Flor De Luna","localidad":"Florida","region":"Biobío","direccion":"LAS HORTENSIAS 812","lat":-36.833846,"lng":-72.683044},{"nombre":"La Chinita","localidad":"Florida","region":"Biobío","direccion":"SGTO ALDEA 455","lat":-36.831255,"lng":-72.682411},{"nombre":"Roro Gas","localidad":"Florida","region":"Biobío","direccion":"GRAL BAQUEDANO 535","lat":-36.837751,"lng":-72.684534},{"nombre":"Supermercado Feng","localidad":"Florida","region":"Biobío","direccion":"","lat":-36.834786,"lng":-72.684373},{"nombre":"Vergel","localidad":"Florida","region":"Biobío","direccion":"","lat":-36.834554,"lng":-72.678022},{"nombre":"Donde La Celia/San Juan","localidad":"Florida","region":"Biobío","direccion":"","lat":-36.836406,"lng":-72.684807},{"nombre":"Donde Limon","localidad":"Florida","region":"Biobío","direccion":"SERRANO 1170","lat":-36.830425,"lng":-72.681905},{"nombre":"Marlene","localidad":"Florida","region":"Biobío","direccion":"ARTURO PRAT 1075","lat":-36.839491,"lng":-72.686529},{"nombre":"Florida Market","localidad":"Florida","region":"Biobío","direccion":"GRAL LAGOS 564","lat":-36.839304,"lng":-72.680726},{"nombre":"Kadema","localidad":"Florida","region":"Biobío","direccion":"","lat":-36.832479,"lng":-72.682778},{"nombre":"La Tienda Amanda","localidad":"Florida","region":"Biobío","direccion":"","lat":-36.839765,"lng":-72.683184},{"nombre":"Minomercado Kadema","localidad":"Florida","region":"Biobío","direccion":"","lat":-36.830439,"lng":-72.681709},{"nombre":"Marianela","localidad":"General Cruz","region":"Ñuble","direccion":"","lat":-36.711989,"lng":-72.246392},{"nombre":"Maria Elena","localidad":"Huacamala","region":"Ñuble","direccion":"","lat":-36.854885,"lng":-72.397793},{"nombre":"Maria Ines","localidad":"La Greda","region":"Ñuble","direccion":"","lat":-36.881483,"lng":-72.28293},{"nombre":"Sra Ana","localidad":"Libuy","region":"Ñuble","direccion":"","lat":-36.885632,"lng":-72.38189},{"nombre":"Supermercado Mary","localidad":"Libuy","region":"Ñuble","direccion":"","lat":-36.887184,"lng":-72.383952},{"nombre":"Minimarket Verito","localidad":"Libuy","region":"Ñuble","direccion":"las vegas de libuy sin n","lat":-36.883763,"lng":-72.378762},{"nombre":"Gloriamonag","localidad":"Monte Aguila","region":"Biobío","direccion":"","lat":-37.162941,"lng":-72.519066},{"nombre":"Super Nixon","localidad":"Monte Aguila","region":"Biobío","direccion":"","lat":-37.166694,"lng":-72.519913},{"nombre":"El Monito","localidad":"Monte Aguila","region":"Biobío","direccion":"","lat":-37.162574,"lng":-72.512995},{"nombre":"Juan Emporio","localidad":"Nonguén","region":"Biobío","direccion":"","lat":-36.885316,"lng":-72.981911},{"nombre":"Dulce Valle","localidad":"Nonguén","region":"Biobío","direccion":"","lat":-36.88221,"lng":-72.986772},{"nombre":"Natalia","localidad":"Nonguén","region":"Biobío","direccion":"","lat":-36.880675,"lng":-72.982906},{"nombre":"Tutti Fruti","localidad":"Nonguén","region":"Biobío","direccion":"","lat":-36.880514,"lng":-72.982996},{"nombre":"Ferreteria","localidad":"Ñipas","region":"Ñuble","direccion":"","lat":-36.904994,"lng":-71.918458},{"nombre":"Servicentro Itata","localidad":"Ñipas","region":"Ñuble","direccion":"","lat":-36.904805,"lng":-71.912409},{"nombre":"Supermercado San Ignacio","localidad":"Palomares San Ignacio","region":"Ñuble","direccion":"","lat":-37.062913,"lng":-72.229983},{"nombre":"Maxiahorro","localidad":"Pemuco","region":"Ñuble","direccion":"","lat":-36.998525,"lng":-72.051021},{"nombre":"Doña Leo","localidad":"Pemuco","region":"Ñuble","direccion":"","lat":-36.99282,"lng":-72.042131},{"nombre":"Botilleria El Maestro","localidad":"Pemuco","region":"Ñuble","direccion":"","lat":-37.000743,"lng":-72.04674},{"nombre":"Minimarket Segura","localidad":"Pemuco","region":"Ñuble","direccion":"","lat":-37.000908,"lng":-72.043994},{"nombre":"La Estrella","localidad":"Pemuco","region":"Ñuble","direccion":"","lat":-36.993942,"lng":-72.050316},{"nombre":"Mingo","localidad":"Pemuco","region":"Ñuble","direccion":"","lat":-36.996847,"lng":-72.046102},{"nombre":"Supermercado Muñoz Jimenez","localidad":"Pueblo Seco","region":"Ñuble","direccion":"","lat":-36.769049,"lng":-72.396276},{"nombre":"Alita","localidad":"Puente Alita","region":"Biobío","direccion":"","lat":-36.584069,"lng":-72.319582},{"nombre":"El Esfuerzo","localidad":"Puente Alita","region":"Biobío","direccion":"oro verde, camino portezuelo km 7","lat":-36.582907,"lng":-72.314401},{"nombre":"Minimarket Olaya","localidad":"Quillon","region":"Ñuble","direccion":"FRANCISCO UNZUETA 422","lat":-36.74777,"lng":-72.472035},{"nombre":"Minimarket La Esquina","localidad":"Quillon","region":"Ñuble","direccion":"ARAUCARIA 451","lat":-36.744752,"lng":-72.47146},{"nombre":"Los Jardines","localidad":"Quillon","region":"Ñuble","direccion":"las violetas 871","lat":-36.743625,"lng":-72.477233},{"nombre":"Supermercado Matias","localidad":"Quillon","region":"Ñuble","direccion":"Diego portales 537","lat":-36.746002,"lng":-72.47559},{"nombre":"La Esparraguera","localidad":"Quillon","region":"Ñuble","direccion":"caupolican 647","lat":-36.745915,"lng":-72.477205},{"nombre":"Almita","localidad":"Quillon","region":"Ñuble","direccion":"jacinto Sepúlveda 603","lat":-36.745508,"lng":-72.476032},{"nombre":"Botilleria Kamikaze","localidad":"Quillon","region":"Ñuble","direccion":"ohiggins 1192","lat":-36.749622,"lng":-72.472518},{"nombre":"Comercial Meryman","localidad":"Quillon","region":"Ñuble","direccion":"18 de September 1105","lat":-36.745958,"lng":-72.480598},{"nombre":"Neymarket","localidad":"Quillon","region":"Ñuble","direccion":"los guindos 212","lat":-36.743006,"lng":-72.476532},{"nombre":"El Copihue","localidad":"Quillon","region":"Ñuble","direccion":"avenida cayumanqui 478","lat":-36.746855,"lng":-72.475588},{"nombre":"Superahorro","localidad":"Quillon","region":"Ñuble","direccion":"caupolican 305","lat":-36.745964,"lng":-72.477387},{"nombre":"Vm","localidad":"Quillon","region":"Ñuble","direccion":"caupolican 385","lat":-36.745676,"lng":-72.477212},{"nombre":"Ferretería Quillay","localidad":"Quillon","region":"Ñuble","direccion":"GABRIELA MISTRAL 401","lat":-36.747211,"lng":-72.472726},{"nombre":"Sabropan","localidad":"Quillon","region":"Ñuble","direccion":"carrera 684","lat":-36.744827,"lng":-72.475164},{"nombre":"Todo Barato","localidad":"Quillon","region":"Ñuble","direccion":"avenida cayumanqui 435","lat":-36.746911,"lng":-72.475684},{"nombre":"Guatondelafruta","localidad":"Quillon","region":"Ñuble","direccion":"","lat":-36.745502,"lng":-72.469988},{"nombre":"Zoila","localidad":"Quillon","region":"Ñuble","direccion":"","lat":-36.742447,"lng":-72.467924},{"nombre":"Fruteria Don Rafi","localidad":"Quillon","region":"Ñuble","direccion":"","lat":-36.739896,"lng":-72.473674},{"nombre":"Don Nico","localidad":"Quillon","region":"Ñuble","direccion":"","lat":-36.745711,"lng":-72.471265},{"nombre":"Ferreteria Electrochavez","localidad":"Quillon","region":"Ñuble","direccion":"","lat":-36.741121,"lng":-72.472171},{"nombre":"Restaurant El Esfuerzo","localidad":"Quillon","region":"Ñuble","direccion":"","lat":-36.747835,"lng":-72.470172},{"nombre":"Más Migas","localidad":"Quillon","region":"Ñuble","direccion":"","lat":-36.745519,"lng":-72.471872},{"nombre":"Market Diez","localidad":"Quillon","region":"Ñuble","direccion":"","lat":-36.747239,"lng":-72.465425},{"nombre":"Agricultor","localidad":"Quillon","region":"Ñuble","direccion":"","lat":-36.745306,"lng":-72.466044},{"nombre":"Los Copihues","localidad":"Quillon","region":"Ñuble","direccion":"","lat":-36.744234,"lng":-72.474152},{"nombre":"Conisol","localidad":"Quillon","region":"Ñuble","direccion":"","lat":-36.739745,"lng":-72.466298},{"nombre":"Galpon Del Aseo","localidad":"Quillon","region":"Ñuble","direccion":"","lat":-36.740047,"lng":-72.465394},{"nombre":"Diego Portales M&M","localidad":"Quillon","region":"Ñuble","direccion":"","lat":-36.74125,"lng":-72.472995},{"nombre":"Minimarket San Francisco","localidad":"Quillon","region":"Ñuble","direccion":"","lat":-36.744881,"lng":-72.47252},{"nombre":"Atacama Drinks","localidad":"Quillon","region":"Ñuble","direccion":"","lat":-36.745727,"lng":-72.474071},{"nombre":"Raiquen","localidad":"Quillon","region":"Ñuble","direccion":"","lat":-36.745948,"lng":-72.464805},{"nombre":"Minimarket Bym","localidad":"Quillon","region":"Ñuble","direccion":"","lat":-36.747085,"lng":-72.466817},{"nombre":"Boti Caupolican","localidad":"Quillon","region":"Ñuble","direccion":"","lat":-36.745187,"lng":-72.470428},{"nombre":"Scoobyfood","localidad":"Quillon","region":"Ñuble","direccion":"","lat":-36.740164,"lng":-72.464704},{"nombre":"Hidroquillon","localidad":"Quillon","region":"Ñuble","direccion":"","lat":-36.74418,"lng":-72.467474},{"nombre":"Los Parientes","localidad":"Cerro Negro","region":"Biobío","direccion":"","lat":-37.120152,"lng":-72.318733},{"nombre":"Centropan","localidad":"Quillón","region":"Ñuble","direccion":"El roble 340","lat":-36.747013,"lng":-72.474832},{"nombre":"Galpon Verde","localidad":"Quillon","region":"Ñuble","direccion":"","lat":-36.744315,"lng":-72.467178},{"nombre":"Cecinas Abelino","localidad":"Quirihue","region":"Ñuble","direccion":"","lat":-36.298528,"lng":-72.531558},{"nombre":"Supermercado Anita","localidad":"Quiriquina","region":"Ñuble","direccion":"","lat":-36.749971,"lng":-72.429773},{"nombre":"Panaderia Victoria","localidad":"Quiriquina","region":"Ñuble","direccion":"","lat":-36.753426,"lng":-72.428692},{"nombre":"El Olivo","localidad":"Quiriquina","region":"Ñuble","direccion":"","lat":-36.754199,"lng":-72.436442},{"nombre":"Ciber Más","localidad":"Rafael","region":"Ñuble","direccion":"","lat":-36.78235,"lng":-72.231548},{"nombre":"Provisiones Cindy","localidad":"Rafael","region":"Ñuble","direccion":"","lat":-36.785948,"lng":-72.237101},{"nombre":"Claudita","localidad":"Rucapequen","region":"Biobío","direccion":"poblacion bellavista la lila 103","lat":-36.846097,"lng":-72.585838},{"nombre":"Carlitos","localidad":"Rucapequen","region":"Biobío","direccion":"el camino publico, 44 villa los maitenes","lat":-36.849055,"lng":-72.582106},{"nombre":"Minimarket Naty","localidad":"San Ignacio","region":"Ñuble","direccion":"San josé km 22, bulnes","lat":-36.807608,"lng":-72.019263},{"nombre":"Km 1.8","localidad":"San Ignacio","region":"Ñuble","direccion":"","lat":-36.806572,"lng":-72.015753},{"nombre":"Donde El Pibe","localidad":"San Ignacio","region":"Ñuble","direccion":"manuel rodriguez 400","lat":-36.809757,"lng":-72.017938},{"nombre":"Carniceria Rodrigo","localidad":"San Ignacio","region":"Ñuble","direccion":"SIMON BOLIVAR 198,SAN IGNACIO","lat":-36.809413,"lng":-72.021142},{"nombre":"La Esperanza","localidad":"San Ignacio","region":"Ñuble","direccion":"","lat":-36.805083,"lng":-72.0221},{"nombre":"La Tradición","localidad":"San Ignacio","region":"Ñuble","direccion":"Manuel Rodriguez 198","lat":-36.808638,"lng":-72.017581},{"nombre":"Troya","localidad":"San Ignacio","region":"Ñuble","direccion":"angel hernandez 501","lat":-36.811075,"lng":-72.020517},{"nombre":"Al Paso","localidad":"Trehuaco","region":"Ñuble","direccion":"","lat":-36.398815,"lng":-72.750139},{"nombre":"El Oferton","localidad":"Trehuaco","region":"Ñuble","direccion":"","lat":-36.408067,"lng":-72.757968},{"nombre":"Minimarket Trehuaco","localidad":"Trehuaco","region":"Ñuble","direccion":"","lat":-36.406148,"lng":-72.750767},{"nombre":"Don Castillo","localidad":"Tres Esquinas","region":"Ñuble","direccion":"TRES ESQUINAS 12","lat":-36.779491,"lng":-72.346207},{"nombre":"Andres","localidad":"Tres Esquinas","region":"Ñuble","direccion":"","lat":-36.784605,"lng":-72.353423},{"nombre":"Minimarket La Greda","localidad":"La Greda San Ignacio","region":"Ñuble","direccion":"","lat":-37.046663,"lng":-72.197965},{"nombre":"Minimarket San Lucas","localidad":"San Igancio","region":"Ñuble","direccion":"MANUEL RODRIGUEZ 203","lat":-36.805683,"lng":-72.015228},{"nombre":"Economia","localidad":"San Ignacio","region":"Ñuble","direccion":"Alcalde humberto ramberton 399","lat":-36.80526,"lng":-72.025022},{"nombre":"Santa Helena","localidad":"Bulnes","region":"Ñuble","direccion":"arturo prat 687","lat":-36.732829,"lng":-72.287206},{"nombre":"Minimarket Los Aromos","localidad":"Tres Esquinas","region":"Ñuble","direccion":"","lat":-36.781666,"lng":-72.345611},{"nombre":"Fruta Verdura Agua Y Bebida","localidad":"San Ignacio","region":"Ñuble","direccion":"MANUEL RODRIGUEZ 99","lat":-36.810457,"lng":-72.023946},{"nombre":"Minimarket Miguel Angel Sepulveda","localidad":"Las Esquinas","region":"Ñuble","direccion":"","lat":-36.78723,"lng":-72.316168},{"nombre":"Osito Market","localidad":"Florida","region":"Biobío","direccion":"eleuterio ramirez 502","lat":-36.837677,"lng":-72.680952}];
+
+    // ── MAPA ─────────────────────────────────────────────────────────────────
+    const leafletMap = L.map('map').setView([-36.88, -72.50], 9);
+    // Tiles CARTO Voyager - sin restricción de Referer, gratuito y sin API key
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+        attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors © <a href="https://carto.com/">CARTO</a>',
+        subdomains: 'abcd',
+        maxZoom: 19
+    }).addTo(leafletMap);
+
+    const dropIcon = L.divIcon({
+        className:'',
+        html:`<div style="width:28px;height:28px;background:linear-gradient(135deg,#1E88E5,#0D47A1);border-radius:50% 50% 50% 0;transform:rotate(-45deg);border:2.5px solid #fff;box-shadow:0 3px 10px rgba(30,136,229,.45)"></div>`,
+        iconSize:[28,28],iconAnchor:[14,28],popupAnchor:[0,-30]
+    });
+
+    let markers=[],activeIdx=null;
+
+    // ── GEOCODIFICACIÓN AUTOMÁTICA vía Nominatim ─────────────────────────────
+    // Usa localStorage como caché para no repetir llamadas entre visitas
+    const GEO_CACHE_KEY = 'cayumanqui_geo_v9';
+    let geoCache = {};
+    try { geoCache = JSON.parse(localStorage.getItem(GEO_CACHE_KEY) || '{}'); } catch(e){}
+
+    // Solo geocodifica negocios con dirección real
+    const noDir = /sin (direcci|n[uú]mero)|sin n°|el varon sin|avda ohiggins poniente sn/i;
+    const toGeocode = CLIENTES.filter(c => c.direccion && !noDir.test(c.direccion));
+
+    async function geocodeOne(c) {
+        const cacheKey = `${c.direccion}|${c.localidad}`;
+        if (geoCache[cacheKey]) {
+            c.lat = geoCache[cacheKey][0];
+            c.lng = geoCache[cacheKey][1];
+            return;
+        }
+        const q = encodeURIComponent(`${c.direccion}, ${c.localidad}, Chile`);
+        try {
+            const r = await fetch(`https://nominatim.openstreetmap.org/search?q=${q}&format=json&limit=1&countrycodes=cl`,
+                { headers: { 'Accept-Language': 'es' } });
+            const d = await r.json();
+            if (d && d.length) {
+                c.lat = parseFloat(d[0].lat);
+                c.lng = parseFloat(d[0].lon);
+                geoCache[cacheKey] = [c.lat, c.lng];
+            }
+        } catch(e) { /* sin conexión: mantiene coordenada aproximada */ }
+    }
+
+    // Geocodifica respetando 1 req/seg y re-dibuja al terminar
+    async function geocodeAll() {
+        for (const c of toGeocode) {
+            await geocodeOne(c);
+            await new Promise(res => setTimeout(res, 1100));
+        }
+        try { localStorage.setItem(GEO_CACHE_KEY, JSON.stringify(geoCache)); } catch(e){}
+        applyFilters(); // re-dibuja con coordenadas exactas
+    }
+
+
+    function renderAll(data){
+        markers.forEach(m=>leafletMap.removeLayer(m.marker));
+        markers=[];activeIdx=null;
+        const list=document.getElementById('clientList');
+        list.innerHTML='';
+        const n=data.length,label=`${n} local${n!==1?'es':''}`;
+        document.getElementById('mapCount').textContent=label;
+        document.getElementById('listCount').textContent=label;
+        if(!n){list.innerHTML=`<div class="empty-state"><i class="fas fa-circle-xmark"></i><p>No se encontraron negocios con ese filtro.</p></div>`;return}
+        data.forEach((c,i)=>{
+            const marker=L.marker([c.lat,c.lng],{icon:dropIcon}).addTo(leafletMap)
+                .bindPopup(`<div style="min-width:190px;font-family:'Montserrat',sans-serif"><div class="popup-nombre"><i class="fas fa-droplet" style="color:#1E88E5;margin-right:5px"></i>${c.nombre}</div><div class="popup-loc"><i class="fas fa-location-dot" style="color:#90a4ae;margin-right:4px"></i>${c.localidad} — ${c.region}</div>${c.direccion?`<div class="popup-addr"><i class="fas fa-map-pin" style="color:#b0bec5;margin-right:4px"></i>${c.direccion}</div>`:''}</div>`);
+            const el=document.createElement('div');
+            el.className='client-item';
+            el.innerHTML=`<div class="client-icon-wrap"><i class="fas fa-store"></i></div><div class="client-info"><div class="client-name">${c.nombre}</div><div class="client-loc"><i class="fas fa-location-dot" style="font-size:.68rem;margin-right:2px;color:#1E88E5"></i>${c.localidad} · ${c.region}</div>${c.direccion?`<div class="client-addr"><i class="fas fa-map-pin" style="font-size:.66rem;margin-right:2px"></i>${c.direccion}</div>`:''}</div>`;
+            el.addEventListener('click',()=>{if(activeIdx!==null&&markers[activeIdx])markers[activeIdx].el.classList.remove('active');el.classList.add('active');activeIdx=i;leafletMap.setView([c.lat,c.lng],15,{animate:true});marker.openPopup()});
+            marker.on('click',()=>{if(activeIdx!==null&&markers[activeIdx])markers[activeIdx].el.classList.remove('active');el.classList.add('active');activeIdx=i;el.scrollIntoView({behavior:'smooth',block:'nearest'})});
+            list.appendChild(el);
+            markers.push({marker,data:c,el});
+        });
+        if(n===1)leafletMap.setView([data[0].lat,data[0].lng],15);
+        else leafletMap.fitBounds(L.latLngBounds(data.map(c=>[c.lat,c.lng])),{padding:[40,40]});
+    }
+
+    const selRegion=document.getElementById('selRegion');
+    const selLocalidad=document.getElementById('selLocalidad');
+    const txtBuscar=document.getElementById('txtBuscar');
+
+    const locPorRegion={};
+    CLIENTES.forEach(c=>{const r=c.region,key=c.localidad.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();if(!locPorRegion[r])locPorRegion[r]=new Map();if(!locPorRegion[r].has(key))locPorRegion[r].set(key,c.localidad)});
+
+    function populateLocalidades(region){
+        selLocalidad.innerHTML='<option value="">— Todas las localidades —</option>';
+        const src=region?(locPorRegion[region]||new Map()):Object.values(locPorRegion).reduce((acc,m)=>{m.forEach((v,k)=>{if(!acc.has(k))acc.set(k,v)});return acc},new Map());
+        [...src.entries()].sort((a,b)=>a[1].localeCompare(b[1])).forEach(([,name])=>{const o=document.createElement('option');o.value=name;o.textContent=name;selLocalidad.appendChild(o)});
+    }
+
+    function norm(s){return s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase()}
+
+    function applyFilters(){
+        const region=selRegion.value,localidad=selLocalidad.value,buscar=norm(txtBuscar.value.trim());
+        renderAll(CLIENTES.filter(c=>{
+            if(region&&c.region!==region)return false;
+            if(localidad&&norm(c.localidad)!==norm(localidad))return false;
+            if(buscar&&!norm(c.nombre).includes(buscar))return false;
+            return true;
+        }));
+    }
+
+    selRegion.addEventListener('change',()=>{populateLocalidades(selRegion.value);selLocalidad.value='';applyFilters()});
+    selLocalidad.addEventListener('change',applyFilters);
+    txtBuscar.addEventListener('input',applyFilters);
+    document.getElementById('btnReset').addEventListener('click',()=>{selRegion.value='';populateLocalidades('');selLocalidad.value='';txtBuscar.value='';applyFilters()});
+
+    AOS.init({duration:800,once:true,offset:60});
+    populateLocalidades('');
+    renderAll(CLIENTES);      // render inmediato con coords aproximadas
+    geocodeAll();             // luego geocodifica en segundo plano y re-dibuja
+    </script>
+
+</body>
+</html>

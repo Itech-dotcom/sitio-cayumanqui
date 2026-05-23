@@ -1,0 +1,841 @@
+/*
+    Autor: Isaac Fernández
+    Fecha de creación: 26/07/2025
+    Última modificación: 14/03/2026
+    Página de Productos - Versión Moderna CORREGIDA
+*/
+
+html, body {
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+.row {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+/* ========== NAVBAR CON WAVE (IGUAL QUE INDEX) ========== */
+
+.logo {
+    height: 50px;
+    margin-right: 10px;
+}
+
+.custom-navbar {
+    background: linear-gradient(135deg, #1E88E5 0%, #0D47A1 100%);
+    font-family: 'Montserrat', sans-serif;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1002;
+    transition: all 0.3s ease;
+    width: 100%;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+}
+
+.navbar-nav .nav-item {
+    margin-right: 20px;
+}
+  
+.custom-navbar .navbar-nav .nav-link {
+    color: white;
+    font-weight: 500;
+    padding: 8px 15px;
+    transition: all 0.3s ease;
+}
+  
+.custom-navbar .navbar-nav .nav-link:hover {
+    color: #e0f7fa;
+    transform: translateY(-2px);
+}
+  
+.custom-navbar .navbar-brand {
+    color: white;
+    font-weight: 700;
+    font-size: 1.3rem;
+}
+
+/* Navbar Wave */
+.navbar-wave {
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+}
+
+.navbar-wave svg {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 30px;
+}
+
+/* Dropdown menu móvil */
+.navbar-collapse {
+    z-index: 1003;
+}
+
+.dropdown-menu,
+.navbar-nav {
+    z-index: 1003;
+}
+
+/* Navbar Toggler personalizado */
+.navbar-toggler {
+    border: 2px solid rgba(255,255,255,0.3);
+    padding: 5px 10px;
+}
+
+.navbar-toggler:focus {
+    box-shadow: 0 0 0 0.2rem rgba(255,255,255,0.3);
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+/* ========== BODY  ========== */
+
+body {
+    margin: 0;
+    padding: 0;
+    padding-top: 90px;
+    font-family: 'Montserrat', sans-serif;
+    background-color: #F5F7FA;
+    color: #2c3e50;
+    overflow-x: hidden;
+}
+
+/* ========== HEADER CATÁLOGO ========== */
+
+.catalogo-header {
+    background: linear-gradient(135deg, #f5f7fa 0%, #e8f0fe 100%);
+    padding: 60px 0 40px 0;
+    text-align: center;
+}
+
+.catalogo-header h1 {
+    font-size: 42px;
+    font-weight: 800;
+    color: #00796b;
+    margin-bottom: 15px;
+}
+
+.catalogo-header p {
+    font-size: 18px;
+    color: #546e7a;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* ========== SUBMENU/FILTROS ========== */
+
+.submenu-catalogo {
+    background: #ffffff;
+    padding: 20px;
+    margin: 30px auto;
+    max-width: 900px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    text-align: center;
+}
+
+.submenu-catalogo a {
+    text-decoration: none;
+    color: #1E88E5;
+    font-weight: 600;
+    padding: 10px 20px;
+    margin: 5px;
+    display: inline-block;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+}
+
+.submenu-catalogo a:hover {
+    background: linear-gradient(135deg, #1E88E5 0%, #0D47A1 100%);
+    color: #ffffff;
+    transform: translateY(-2px);
+}
+
+/* Botón catálogo móvil - CENTRADO */
+.btn-catalogo {
+    background: linear-gradient(135deg, #1E88E5, #0D47A1);
+    color: #ffffff;
+    border: none;
+    border-radius: 25px;
+    padding: 12px 24px;
+    margin-bottom: 30px;
+    font-weight: 600;
+    box-shadow: 0 4px 15px rgba(30, 136, 229, 0.3);
+    transition: all 0.3s ease;
+}
+
+.btn-catalogo:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(30, 136, 229, 0.4);
+    color: #ffffff;
+}
+
+/* DROPDOWN EN MÓVIL */
+.dropdown {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.dropdown-menu {
+    background: #ffffff;
+    border: 1px solid rgba(0,0,0,0.1);
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    text-align: center;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    min-width: 250px;
+}
+
+.dropdown-menu a {
+    color: #2c3e50;
+    font-weight: 500;
+    padding: 12px 20px;
+}
+
+.dropdown-menu a:hover {
+    background: linear-gradient(135deg, #1E88E5, #0D47A1);
+    color: #ffffff;
+}
+
+/* ========== SECCIÓN CATÁLOGO ========== */
+
+.catalogo {
+    padding: 40px 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* Títulos de categoría */
+.titulo {
+    text-align: center;
+    background: linear-gradient(135deg, #1E88E5 0%, #0D47A1 100%);
+    display: inline-block;
+    padding: 12px 30px;
+    border-radius: 30px;
+    font-weight: 700;
+    font-size: 28px;
+    color: #ffffff;
+    box-shadow: 0 4px 15px rgba(30, 136, 229, 0.3);
+    margin-bottom: 40px;
+    margin-top: 20px;
+}
+
+/* ========== TARJETAS DE PRODUCTOS - CORREGIDAS PARA MÓVIL ========== */
+
+.producto {
+    background: #FFFFFF;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgba(0,0,0,0.05);
+    position: relative; /* AÑADIDO para evitar problemas de z-index */
+    z-index: 1; /* AÑADIDO */
+}
+
+.producto:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+    border-color: rgba(30, 136, 229, 0.2);
+    z-index: 10; /* AÑADIDO para que al hover esté encima */
+}
+
+.producto img {
+    width: 100%;
+    height: 220px;
+    object-fit: contain;
+    border-radius: 15px;
+    margin-bottom: 15px;
+    filter: drop-shadow(0 5px 15px rgba(0,0,0,0.1));
+}
+
+.titulo-producto {
+    font-weight: 700;
+    font-size: 20px;
+    color: #00796b;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.subtitulo {
+    background: linear-gradient(135deg, #e8f0fe, #e3f2fd);
+    display: inline-block;
+    padding: 5px 14px;
+    border-radius: 20px;
+    font-weight: 600;
+    margin: 8px auto;
+    color: #1E88E5;
+    font-size: 13px;
+    text-align: center;
+}
+
+.caracteristicas {
+    font-size: 13px;
+    color: #546e7a;
+    margin-bottom: 12px;
+    line-height: 1.6;
+    text-align: left;
+    flex-grow: 1;
+}
+
+.caracteristicas ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+.caracteristicas li {
+    padding: 4px 0;
+    position: relative;
+    padding-left: 18px;
+}
+
+.caracteristicas li:before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: #1E88E5;
+    font-weight: 700;
+}
+
+.codigo {
+    font-size: 12px;
+    color: #90a4ae;
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+.linea {
+    font-size: 12px;
+    color: #90a4ae;
+    margin-bottom: 10px;
+}
+
+.precio {
+    background: linear-gradient(135deg, #1E88E5 0%, #0D47A1 100%);
+    display: inline-block;
+    padding: 10px 20px; /* REDUCIDO */
+    border-radius: 25px;
+    font-weight: 700;
+    font-size: 20px; /* REDUCIDO de 24px */
+    color: #ffffff;
+    box-shadow: 0 4px 15px rgba(30, 136, 229, 0.3);
+    margin-bottom: 12px;
+    text-align: center;
+}
+
+.btn-ver-detalles {
+    background: linear-gradient(135deg, #1E88E5 0%, #0D47A1 100%);
+    color: white;
+    padding: 10px 20px; /* REDUCIDO */
+    border-radius: 50px;
+    text-decoration: none;
+    display: inline-block;
+    font-weight: 600;
+    font-size: 14px; /* REDUCIDO */
+    transition: all 0.3s ease;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+    white-space: nowrap; /* EVITA QUE SE PARTA EN 2 LÍNEAS */
+}
+
+.btn-ver-detalles:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(30, 136, 229, 0.4);
+    color: white;
+}
+
+/* ========== MODAL ========== */
+
+#modal-detalles .modal-content {
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 30px;
+    border: none;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+}
+
+#modal-detalles .modal-header {
+    border-bottom: 2px solid #e8f0fe;
+    padding-bottom: 20px;
+}
+
+#modal-detalles .modal-title {
+    color: #00796b;
+    font-weight: 800;
+    font-size: 28px;
+    text-align: center;
+    width: 100%;
+}
+
+#modal-detalles .modal-body {
+    padding: 30px 0;
+}
+
+#modal-detalles .modal-body p {
+    color: #546e7a;
+    line-height: 1.8;
+}
+
+/* Botón hacia arriba */
+#btn-top {
+    position: fixed;
+    bottom: 80px;
+    left: 20px;
+    z-index: 999;
+    background: linear-gradient(135deg, #1E88E5 0%, #0D47A1 100%);
+    color: white;
+    border: none;
+    padding: 12px 16px;
+    border-radius: 50%;
+    font-size: 20px;
+    cursor: pointer;
+    display: none;
+    box-shadow: 0 4px 15px rgba(30, 136, 229, 0.4);
+    transition: all 0.3s ease;
+}
+
+#btn-top:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(30, 136, 229, 0.5);
+}
+
+/* ========== WHATSAPP FLOTANTE ========== */
+
+.whatsapp-float {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: linear-gradient(135deg, #25D366, #128C7E);
+    color: white;
+    padding: 14px 24px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 16px;
+    box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+    z-index: 1001;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.whatsapp-float:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(37, 211, 102, 0.5);
+    color: white;
+}
+
+.whatsapp-float i {
+    font-size: 20px;
+}
+
+/* ========== FOOTER (IGUAL QUE INDEX) ========== */
+
+.footer-wave {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+}
+
+.footer-wave svg {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 60px;
+}
+
+.pie-pagina {
+    background: linear-gradient(135deg, #263238 0%, #37474F 100%);
+    color: #eceff1;
+    font-size: 15px;
+    position: relative;
+    padding-top: 0;
+}
+  
+.pie-pagina h5 {
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #ffffff;
+    font-size: 18px;
+}
+  
+.pie-pagina a {
+    text-decoration: none;
+    color: #b0bec5;
+    transition: all 0.3s ease;
+}
+
+.pie-pagina p {
+    color: #b0bec5;
+    line-height: 1.8;
+}
+  
+.pie-pagina a:hover {
+    color: #1E88E5;
+    text-decoration: none;
+}
+
+.footer-text {
+    color: #b0bec5;
+    line-height: 1.8;
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links li {
+    margin-bottom: 10px;
+}
+
+.footer-contact {
+    line-height: 2;
+}
+
+.footer-contact i {
+    color: #1E88E5;
+    margin-right: 10px;
+}
+
+.logo-footer {
+    width: 180px;
+    margin-bottom: 20px;
+    filter: brightness(0) invert(1);
+}
+
+.footer-divider {
+    border-color: rgba(255,255,255,0.1);
+    margin: 30px 0;
+}
+
+.footer-copyright {
+    color: #90a4ae;
+    font-size: 14px;
+    margin: 0;
+}
+
+.iconos-redes {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.iconos-redes a {
+    font-size: 24px;
+    color: #b0bec5;
+    transition: all 0.3s ease;
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.iconos-redes a:hover {
+    transform: translateY(-5px);
+    color: #1E88E5;
+    background: rgba(30, 136, 229, 0.1);
+}
+
+/* ========== SECCIÓN INTRO CATÁLOGO ========== */
+
+.catalogo-intro {
+    background: #ffffff;
+    padding: 50px 0 10px;
+}
+
+.catalogo-intro-inner {
+    background: linear-gradient(135deg, #1E88E5 0%, #0D47A1 100%);
+    border-radius: 24px;
+    padding: 50px 50px 45px;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    box-shadow: 0 10px 40px rgba(30, 136, 229, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Círculo decorativo de fondo */
+.catalogo-intro-inner::before {
+    content: '';
+    position: absolute;
+    top: -60px;
+    right: -60px;
+    width: 280px;
+    height: 280px;
+    background: rgba(255, 255, 255, 0.06);
+    border-radius: 50%;
+}
+
+.catalogo-intro-inner::after {
+    content: '';
+    position: absolute;
+    bottom: -80px;
+    left: 30%;
+    width: 200px;
+    height: 200px;
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: 50%;
+}
+
+.catalogo-intro-icon {
+    width: 90px;
+    height: 90px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    border: 2px solid rgba(255, 255, 255, 0.25);
+    position: relative;
+    z-index: 1;
+}
+
+.catalogo-intro-icon i {
+    font-size: 38px;
+    color: #ffffff;
+}
+
+.catalogo-intro-text {
+    flex: 1;
+    position: relative;
+    z-index: 1;
+}
+
+.catalogo-intro-text h2 {
+    font-size: 22px;
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 12px;
+    line-height: 1.3;
+}
+
+.catalogo-intro-text p {
+    font-size: 15px;
+    color: rgba(255, 255, 255, 0.88);
+    line-height: 1.7;
+    margin: 0;
+}
+
+.catalogo-intro-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1;
+}
+
+.intro-stat {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 30px;
+    padding: 8px 18px;
+    white-space: nowrap;
+}
+
+.intro-stat i {
+    font-size: 15px;
+    color: #ffffff;
+}
+
+.intro-stat span {
+    font-size: 13px;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+/* ========== RESPONSIVE - CORREGIDO PARA MÓVIL ========== */
+
+@media (max-width: 768px) {
+    body {
+        padding-top: 75px;
+    }
+
+    .catalogo-intro {
+        padding: 30px 0 5px;
+    }
+
+    .catalogo-intro-inner {
+        flex-direction: column;
+        text-align: center;
+        padding: 35px 25px 30px;
+        gap: 25px;
+    }
+
+    .catalogo-intro-icon {
+        width: 70px;
+        height: 70px;
+    }
+
+    .catalogo-intro-icon i {
+        font-size: 28px;
+    }
+
+    .catalogo-intro-text h2 {
+        font-size: 18px;
+    }
+
+    .catalogo-intro-text p {
+        font-size: 13px;
+    }
+
+    .catalogo-intro-stats {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px;
+    }
+
+    .intro-stat {
+        padding: 6px 14px;
+    }
+
+    .intro-stat span {
+        font-size: 11px;
+    }
+    
+    .navbar-wave svg {
+        height: 20px;
+    }
+    
+    .catalogo-header {
+        padding: 30px 15px 20px 15px;
+    }
+    
+    .catalogo-header h1 {
+        font-size: 26px; /* REDUCIDO */
+    }
+    
+    .catalogo-header p {
+        font-size: 14px;
+    }
+    
+    .catalogo {
+        padding: 25px 15px;
+    }
+    
+    .titulo {
+        font-size: 22px; /* REDUCIDO */
+        padding: 8px 20px;
+        margin-bottom: 25px;
+    }
+    
+    /* TARJETAS MÓVIL - CORREGIDAS */
+    .producto {
+        padding: 15px;
+        margin-bottom: 20px;
+        overflow: visible; /* AÑADIDO */
+    }
+    
+    .producto img {
+        height: 160px; /* REDUCIDO */
+    }
+    
+    .titulo-producto {
+        font-size: 16px; /* REDUCIDO */
+        margin-bottom: 8px;
+    }
+    
+    .subtitulo {
+        font-size: 11px;
+        padding: 4px 10px;
+        display: none; /* OCULTO EN MÓVIL para ahorrar espacio */
+    }
+    
+    .caracteristicas {
+        display: none; /* OCULTO EN MÓVIL */
+    }
+    
+    .codigo {
+        font-size: 11px;
+        margin-bottom: 8px;
+    }
+    
+    .precio {
+        font-size: 16px; /* REDUCIDO */
+        padding: 8px 16px;
+        margin-bottom: 10px;
+    }
+    
+    .btn-ver-detalles {
+        font-size: 12px; /* REDUCIDO */
+        padding: 8px 16px;
+        width: 100%; /* OCUPA TODO EL ANCHO */
+    }
+    
+    .footer-wave svg {
+        height: 40px;
+    }
+    
+    .whatsapp-float {
+        padding: 10px 16px;
+        font-size: 13px;
+        bottom: 15px;
+        right: 15px;
+    }
+    
+    .whatsapp-float i {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .catalogo-header h1 {
+        font-size: 24px;
+    }
+    
+    .titulo {
+        font-size: 20px;
+        padding: 8px 16px;
+    }
+    
+    .producto img {
+        height: 140px;
+    }
+    
+    .titulo-producto {
+        font-size: 15px;
+    }
+    
+    .precio {
+        font-size: 15px;
+        padding: 7px 14px;
+    }
+    
+    .btn-ver-detalles {
+        font-size: 11px;
+        padding: 7px 14px;
+    }
+}

@@ -1,0 +1,669 @@
+/*
+    Autor: Isaac Fernández
+    Fecha de creación: 27/07/2025
+    Última modificación: 14/03/2026
+    Página Puntos de Venta - Mapa interactivo de clientes
+*/
+
+/* ── BASE ── */
+html, body {
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+.row {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+body {
+    padding-top: 90px;
+    font-family: 'Montserrat', sans-serif;
+    background-color: #F5F7FA;
+    color: #2c3e50;
+    overflow-x: hidden;
+}
+
+/* ── NAVBAR ── */
+.logo {
+    height: 50px;
+    margin-right: 10px;
+}
+
+.custom-navbar {
+    background: linear-gradient(135deg, #1E88E5 0%, #0D47A1 100%);
+    font-family: 'Montserrat', sans-serif;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1002;
+    transition: all 0.3s ease;
+    width: 100%;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-nav .nav-item {
+    margin-right: 20px;
+}
+
+.custom-navbar .navbar-nav .nav-link {
+    color: white;
+    font-weight: 500;
+    padding: 8px 15px;
+    transition: all 0.3s ease;
+}
+
+.custom-navbar .navbar-nav .nav-link:hover {
+    color: #e0f7fa;
+    transform: translateY(-2px);
+}
+
+.custom-navbar .navbar-brand {
+    color: white;
+    font-weight: 700;
+    font-size: 1.3rem;
+}
+
+.navbar-wave {
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+}
+
+.navbar-wave svg {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 30px;
+}
+
+.navbar-collapse,
+.dropdown-menu,
+.navbar-nav {
+    z-index: 1003;
+}
+
+.navbar-toggler {
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    padding: 5px 10px;
+}
+
+.navbar-toggler:focus {
+    box-shadow: 0 0 0 0.2rem rgba(255, 255, 255, 0.3);
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+/* ── HERO ── */
+.hero-rutas {
+    background: linear-gradient(135deg, #f5f7fa 0%, #e8f0fe 100%);
+    padding: 60px 0;
+    text-align: center;
+}
+
+.hero-badge {
+    background: linear-gradient(135deg, #1E88E5, #0D47A1);
+    color: white;
+    padding: 8px 20px;
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: 600;
+    display: inline-block;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 15px rgba(30, 136, 229, 0.3);
+}
+
+.hero-badge i {
+    margin-right: 8px;
+}
+
+.hero-title {
+    font-size: 42px;
+    font-weight: 800;
+    color: #00796b;
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.hero-subtitle {
+    font-size: 18px;
+    color: #546e7a;
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.7;
+}
+
+/* ── SECTION TITLES ── */
+.section-title {
+    font-size: 36px;
+    font-weight: 700;
+    color: #00796b;
+    margin-bottom: 15px;
+}
+
+.section-subtitle {
+    font-size: 18px;
+    color: #546e7a;
+    font-weight: 400;
+}
+
+/* ── FILTROS ── */
+.filtros-section {
+    padding: 60px 0 30px;
+    background: #ffffff;
+}
+
+.filtros-card {
+    background: #f8f9fa;
+    border-radius: 20px;
+    padding: 35px 40px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(30, 136, 229, 0.1);
+}
+
+.filtros-card label {
+    font-weight: 600;
+    color: #2c3e50;
+    font-size: 0.88rem;
+    margin-bottom: 6px;
+    display: block;
+}
+
+.filtros-card select,
+.filtros-card input {
+    border: 2px solid rgba(30, 136, 229, 0.2);
+    border-radius: 10px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.9rem;
+    padding: 0.5rem 0.85rem;
+    transition: border-color 0.25s, box-shadow 0.25s;
+    width: 100%;
+}
+
+.filtros-card select:focus,
+.filtros-card input:focus {
+    border-color: #1E88E5;
+    box-shadow: 0 0 0 3px rgba(30, 136, 229, 0.15);
+    outline: none;
+}
+
+.input-icon-wrap {
+    position: relative;
+}
+
+.input-icon-wrap i {
+    position: absolute;
+    left: 13px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #1E88E5;
+    font-size: 0.82rem;
+    pointer-events: none;
+}
+
+.input-icon-wrap input {
+    padding-left: 2.4rem;
+}
+
+.btn-reset-filtros {
+    background: linear-gradient(135deg, #1E88E5, #0D47A1);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 0.9rem;
+    padding: 0.55rem 1.4rem;
+    transition: all 0.25s;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    box-shadow: 0 4px 12px rgba(30, 136, 229, 0.3);
+}
+
+.btn-reset-filtros:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(30, 136, 229, 0.4);
+    color: white;
+}
+
+/* ── MAPA ── */
+.mapa-section {
+    padding: 10px 0 50px;
+    background: #ffffff;
+}
+
+.mapa-card {
+    background: #ffffff;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(30, 136, 229, 0.12);
+}
+
+.mapa-card-header {
+    background: linear-gradient(135deg, #1E88E5 0%, #0D47A1 100%);
+    color: white;
+    padding: 1rem 1.6rem;
+    font-weight: 700;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+}
+
+.mapa-count-badge {
+    background: rgba(255, 255, 255, 0.22);
+    border-radius: 20px;
+    padding: 0.18rem 0.75rem;
+    font-size: 0.82rem;
+    font-weight: 700;
+    margin-left: auto;
+}
+
+#map {
+    height: 520px;
+    width: 100%;
+    z-index: 1;
+}
+
+/* ── LISTADO ── */
+.listado-outer {
+    background: linear-gradient(180deg, rgba(30, 136, 229, 0.04) 0%, rgba(0, 195, 255, 0.06) 100%);
+    padding: 60px 0;
+    position: relative;
+}
+
+.listado-card {
+    background: #ffffff;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0, 195, 255, 0.1);
+    border: 1px solid rgba(0, 195, 255, 0.1);
+}
+
+.listado-header {
+    background: linear-gradient(135deg, #1E88E5 0%, #0D47A1 100%);
+    color: white;
+    padding: 1rem 1.6rem;
+    font-weight: 700;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.list-count-badge {
+    background: rgba(255, 255, 255, 0.22);
+    border-radius: 20px;
+    padding: 0.18rem 0.75rem;
+    font-size: 0.82rem;
+    font-weight: 700;
+}
+
+.listado-body {
+    max-height: 460px;
+    overflow-y: auto;
+    padding: 0.6rem;
+}
+
+.listado-body::-webkit-scrollbar {
+    width: 5px;
+}
+
+.listado-body::-webkit-scrollbar-track {
+    background: #f1f5f9;
+}
+
+.listado-body::-webkit-scrollbar-thumb {
+    background: #90caf9;
+    border-radius: 3px;
+}
+
+.client-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.85rem;
+    padding: 0.8rem 1rem;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s, border-color 0.2s;
+    border: 1.5px solid transparent;
+    margin-bottom: 2px;
+}
+
+.client-item:hover {
+    background: #e8f0fe;
+    border-color: rgba(30, 136, 229, 0.25);
+    transform: translateX(4px);
+}
+
+.client-item.active {
+    background: #e3f2fd;
+    border-color: #1E88E5;
+}
+
+.client-icon-wrap {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, #1E88E5, #0D47A1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 0.95rem;
+    flex-shrink: 0;
+    box-shadow: 0 3px 10px rgba(30, 136, 229, 0.3);
+}
+
+.client-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.client-name {
+    font-weight: 700;
+    color: #00796b;
+    font-size: 0.88rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.client-loc {
+    font-size: 0.76rem;
+    color: #546e7a;
+    margin-top: 2px;
+}
+
+.client-addr {
+    font-size: 0.73rem;
+    color: #90a4ae;
+    margin-top: 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Empty state */
+.empty-state {
+    text-align: center;
+    padding: 2.5rem;
+    color: #90a4ae;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.empty-state i {
+    font-size: 2.8rem;
+    margin-bottom: 0.75rem;
+    display: block;
+}
+
+.empty-state p {
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+/* Leaflet popup */
+.leaflet-popup-content-wrapper {
+    border-radius: 12px;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.18);
+}
+
+.popup-nombre {
+    font-weight: 700;
+    color: #00796b;
+    font-size: 0.97rem;
+    margin-bottom: 4px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.popup-loc {
+    color: #546e7a;
+    font-size: 0.8rem;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.popup-addr {
+    color: #37474f;
+    font-size: 0.8rem;
+    margin-top: 4px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* ── CTA FINAL ── */
+.cta-final-section {
+    background: linear-gradient(135deg, #1E88E5 0%, #0D47A1 100%);
+    padding: 80px 0;
+    color: white;
+}
+
+.cta-title {
+    font-size: 36px;
+    font-weight: 800;
+    color: white;
+    margin-bottom: 15px;
+}
+
+.cta-text {
+    font-size: 18px;
+    color: rgba(255, 255, 255, 0.9);
+    margin: 0;
+}
+
+.btn-cta {
+    background: white;
+    color: #1E88E5;
+    padding: 16px 40px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 18px;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.btn-cta:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+    color: #0D47A1;
+}
+
+.btn-cta i {
+    font-size: 24px;
+}
+
+/* ── WHATSAPP FLOTANTE ── */
+.whatsapp-float {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: linear-gradient(135deg, #25D366, #128C7E);
+    color: white;
+    padding: 14px 24px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 16px;
+    box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+    z-index: 1001;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.whatsapp-float:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(37, 211, 102, 0.5);
+    color: white;
+}
+
+.whatsapp-float i {
+    font-size: 20px;
+}
+
+/* ── FOOTER ── */
+.footer-wave {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+}
+
+.footer-wave svg {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 60px;
+}
+
+.pie-pagina {
+    background: linear-gradient(135deg, #263238 0%, #37474F 100%);
+    color: #eceff1;
+    font-size: 15px;
+    position: relative;
+    padding-top: 0;
+}
+
+.pie-pagina h5 {
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #ffffff;
+    font-size: 18px;
+}
+
+.pie-pagina a {
+    text-decoration: none;
+    color: #b0bec5;
+    transition: all 0.3s ease;
+}
+
+.pie-pagina p {
+    color: #b0bec5;
+    line-height: 1.8;
+}
+
+.pie-pagina a:hover {
+    color: #1E88E5;
+}
+
+.footer-text {
+    color: #b0bec5;
+    line-height: 1.8;
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links li {
+    margin-bottom: 10px;
+}
+
+.footer-contact {
+    line-height: 2;
+}
+
+.footer-contact i {
+    color: #1E88E5;
+    margin-right: 10px;
+}
+
+.logo-footer {
+    width: 180px;
+    margin-bottom: 20px;
+    filter: brightness(0) invert(1);
+}
+
+.footer-divider {
+    border-color: rgba(255, 255, 255, 0.1);
+    margin: 30px 0;
+}
+
+.footer-copyright {
+    color: #90a4ae;
+    font-size: 14px;
+    margin: 0;
+}
+
+.iconos-redes {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.iconos-redes a {
+    font-size: 24px;
+    color: #b0bec5;
+    transition: all 0.3s ease;
+    width: 45px;
+    height: 45px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.iconos-redes a:hover {
+    transform: translateY(-5px);
+    color: #1E88E5;
+    background: rgba(30, 136, 229, 0.1);
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 991px) {
+    .hero-title { font-size: 32px; }
+    .section-title { font-size: 28px; }
+}
+
+@media (max-width: 768px) {
+    body { padding-top: 75px; }
+    .navbar-wave svg { height: 20px; }
+
+    .hero-rutas { padding: 35px 15px; }
+    .hero-badge { font-size: 12px; padding: 6px 16px; margin-bottom: 15px; }
+    .hero-title { font-size: 24px; margin-bottom: 15px; }
+    .hero-subtitle { font-size: 14px; }
+
+    .filtros-section { padding: 35px 0 15px; }
+    .filtros-card { padding: 20px 18px; }
+
+    .section-title { font-size: 22px; margin-bottom: 10px; }
+    .section-subtitle { font-size: 14px; }
+
+    #map { height: 360px; }
+
+    .listado-outer { padding: 35px 0; }
+
+    .cta-final-section { padding: 40px 15px; }
+    .cta-title { font-size: 22px; margin-bottom: 15px; }
+    .cta-text { font-size: 14px; margin-bottom: 20px; }
+    .btn-cta { width: 100%; justify-content: center; font-size: 16px; padding: 14px 30px; }
+
+    .footer-wave svg { height: 40px; }
+
+    .whatsapp-float { padding: 10px 16px; font-size: 13px; bottom: 15px; right: 15px; }
+    .whatsapp-float i { font-size: 16px; }
+}
+
+@media (max-width: 480px) {
+    .hero-title { font-size: 22px; }
+    .section-title { font-size: 20px; }
+    .cta-title { font-size: 20px; }
+}

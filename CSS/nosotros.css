@@ -1,0 +1,913 @@
+/*
+    Autor: Isaac Fernández
+    Fecha de creación: 27/07/2025
+    Última modificación: 14/03/2026
+    Página Acerca de Nosotros - OPTIMIZADO PARA MÓVIL
+*/
+
+html, body {
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+.row {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+/* ========== NAVBAR CON WAVE (IGUAL QUE INDEX) ========== */
+
+.logo {
+    height: 50px;
+    margin-right: 10px;
+}
+
+.custom-navbar {
+    background: linear-gradient(135deg, #1E88E5 0%, #0D47A1 100%);
+    font-family: 'Montserrat', sans-serif;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1002;
+    transition: all 0.3s ease;
+    width: 100%;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+}
+
+.navbar-nav .nav-item {
+    margin-right: 20px;
+}
+  
+.custom-navbar .navbar-nav .nav-link {
+    color: white;
+    font-weight: 500;
+    padding: 8px 15px;
+    transition: all 0.3s ease;
+}
+  
+.custom-navbar .navbar-nav .nav-link:hover {
+    color: #e0f7fa;
+    transform: translateY(-2px);
+}
+  
+.custom-navbar .navbar-brand {
+    color: white;
+    font-weight: 700;
+    font-size: 1.3rem;
+}
+
+/* Navbar Wave */
+.navbar-wave {
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+}
+
+.navbar-wave svg {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 30px;
+}
+
+/* Dropdown menu móvil */
+.navbar-collapse {
+    z-index: 1003;
+}
+
+.dropdown-menu,
+.navbar-nav {
+    z-index: 1003;
+}
+
+/* Navbar Toggler personalizado */
+.navbar-toggler {
+    border: 2px solid rgba(255,255,255,0.3);
+    padding: 5px 10px;
+}
+
+.navbar-toggler:focus {
+    box-shadow: 0 0 0 0.2rem rgba(255,255,255,0.3);
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+/* ========== BODY ========== */
+
+body {
+    margin: 0;
+    padding: 0;
+    padding-top: 90px;
+    font-family: 'Montserrat', sans-serif;
+    background-color: #F5F7FA;
+    color: #2c3e50;
+    overflow-x: hidden;
+}
+
+/* ========== HERO SECTION PEQUEÑO ========== */
+
+.hero-nosotros {
+    background: linear-gradient(135deg, #f5f7fa 0%, #e8f0fe 100%);
+    padding: 60px 0;
+    text-align: center;
+}
+
+.hero-badge {
+    background: linear-gradient(135deg, #1E88E5, #0D47A1);
+    color: white;
+    padding: 8px 20px;
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: 600;
+    display: inline-block;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 15px rgba(30, 136, 229, 0.3);
+}
+
+.hero-badge i {
+    margin-right: 8px;
+}
+
+.hero-title {
+    font-size: 42px;
+    font-weight: 800;
+    color: #00796b;
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.hero-subtitle {
+    font-size: 18px;
+    color: #546e7a;
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.7;
+}
+
+/* ========== NUESTRA HISTORIA ========== */
+
+.historia-section {
+    padding: 80px 0;
+    background: #ffffff;
+}
+
+.historia-content {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px;
+    background: #f8f9fa;
+    border-radius: 20px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+}
+
+.historia-content p {
+    font-size: 17px;
+    line-height: 1.9;
+    color: #546e7a;
+    margin-bottom: 20px;
+}
+
+.historia-content p:last-child {
+    margin-bottom: 0;
+}
+
+/* ========== SECCIÓN DE CONFIANZA CON WAVE ========== */
+
+.confianza-section {
+    padding: 80px 0;
+    position: relative;
+    background: linear-gradient(180deg, rgba(30, 136, 229, 0.04) 0%, rgba(0, 195, 255, 0.06) 100%);
+    overflow: hidden;
+}
+
+/* Ondas SVG */
+.wave-top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+}
+
+.wave-top svg {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 60px;
+}
+
+.wave-bottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg);
+}
+
+.wave-bottom svg {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 60px;
+}
+
+/* Headers de sección */
+.section-header {
+    margin-bottom: 50px;
+}
+
+.section-title {
+    font-size: 36px;
+    font-weight: 700;
+    color: #00796b;
+    margin-bottom: 15px;
+}
+
+.section-subtitle {
+    font-size: 18px;
+    color: #546e7a;
+    font-weight: 400;
+}
+
+/* Cards de confianza */
+.confianza-card {
+    background: #ffffff;
+    padding: 30px 20px;
+    border-radius: 20px;
+    text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 20px rgba(0, 195, 255, 0.1);
+    height: 100%;
+    border: 1px solid rgba(0, 195, 255, 0.1);
+}
+
+.confianza-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0, 195, 255, 0.2);
+    border-color: rgba(0, 195, 255, 0.3);
+}
+
+.confianza-icon {
+    width: 70px;
+    height: 70px;
+    margin: 0 auto 20px;
+    background: linear-gradient(135deg, #1E88E5, #0D47A1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 32px;
+    box-shadow: 0 4px 15px rgba(30, 136, 229, 0.3);
+}
+
+.confianza-card h3 {
+    font-size: 19px;
+    font-weight: 700;
+    color: #00796b;
+    margin-bottom: 12px;
+}
+
+.confianza-card p {
+    font-size: 14px;
+    color: #546e7a;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* ========== MISIÓN Y VISIÓN (FOTO + TEXTO) ========== */
+
+.mision-vision-section {
+    padding: 80px 0;
+    background: #ffffff;
+}
+
+.imagen-placeholder {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    background: #e8f0fe;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.imagen-placeholder img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.placeholder-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: #90a4ae;
+}
+
+.placeholder-text i {
+    font-size: 64px;
+    margin-bottom: 15px;
+    opacity: 0.5;
+}
+
+.placeholder-text p {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0;
+}
+
+.content-box {
+    padding: 40px;
+    background: #f8f9fa;
+    border-radius: 20px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.icon-badge {
+    width: 70px;
+    height: 70px;
+    background: linear-gradient(135deg, #1E88E5, #0D47A1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 32px;
+    margin-bottom: 25px;
+    box-shadow: 0 4px 15px rgba(30, 136, 229, 0.3);
+}
+
+.content-box h2 {
+    font-size: 32px;
+    font-weight: 700;
+    color: #00796b;
+    margin-bottom: 20px;
+}
+
+.content-box p {
+    font-size: 17px;
+    line-height: 1.8;
+    color: #546e7a;
+    margin: 0;
+}
+
+/* ========== PROCESO TÉCNICO ========== */
+
+.proceso-tecnico-section {
+    padding: 80px 0;
+    background: #F5F7FA;
+}
+
+.proceso-tecnico-card {
+    background: #ffffff;
+    padding: 30px 20px;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    height: 100%;
+    border: 2px solid rgba(30, 136, 229, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.proceso-tecnico-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(135deg, #1E88E5, #0D47A1);
+}
+
+.proceso-tecnico-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+    border-color: rgba(30, 136, 229, 0.3);
+}
+
+.proceso-numero {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: linear-gradient(135deg, #e8f0fe, #e3f2fd);
+    color: #1E88E5;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 16px;
+}
+
+.proceso-icono {
+    width: 70px;
+    height: 70px;
+    background: linear-gradient(135deg, #1E88E5, #0D47A1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 32px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 15px rgba(30, 136, 229, 0.3);
+}
+
+.proceso-tecnico-card h3 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #00796b;
+    margin-bottom: 12px;
+}
+
+.proceso-tecnico-card > p {
+    font-size: 14px;
+    color: #546e7a;
+    line-height: 1.7;
+    margin-bottom: 15px;
+}
+
+.proceso-detalles {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.proceso-detalles li {
+    font-size: 13px;
+    color: #546e7a;
+    padding: 6px 0;
+    padding-left: 20px;
+    position: relative;
+    border-left: 3px solid #1E88E5;
+    margin-bottom: 6px;
+}
+
+.proceso-detalles li::before {
+    content: "•";
+    position: absolute;
+    left: 6px;
+    color: #1E88E5;
+    font-weight: 700;
+}
+
+/* ========== CTA FINAL ========== */
+
+.cta-final-section {
+    background: linear-gradient(135deg, #1E88E5 0%, #0D47A1 100%);
+    padding: 80px 0;
+    color: white;
+}
+
+.cta-title {
+    font-size: 36px;
+    font-weight: 800;
+    color: white;
+    margin-bottom: 15px;
+}
+
+.cta-text {
+    font-size: 18px;
+    color: rgba(255,255,255,0.9);
+    margin: 0;
+}
+
+.btn-cta {
+    background: white;
+    color: #1E88E5;
+    padding: 16px 40px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 18px;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+}
+
+.btn-cta:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+    color: #0D47A1;
+}
+
+.btn-cta i {
+    font-size: 24px;
+}
+
+/* ========== WHATSAPP FLOTANTE ========== */
+
+.whatsapp-float {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: linear-gradient(135deg, #25D366, #128C7E);
+    color: white;
+    padding: 14px 24px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 16px;
+    box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+    z-index: 1001;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.whatsapp-float:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(37, 211, 102, 0.5);
+    color: white;
+}
+
+.whatsapp-float i {
+    font-size: 20px;
+}
+
+/* ========== FOOTER (IGUAL QUE INDEX) ========== */
+
+.footer-wave {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+}
+
+.footer-wave svg {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 60px;
+}
+
+.pie-pagina {
+    background: linear-gradient(135deg, #263238 0%, #37474F 100%);
+    color: #eceff1;
+    font-size: 15px;
+    position: relative;
+    padding-top: 0;
+}
+  
+.pie-pagina h5 {
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #ffffff;
+    font-size: 18px;
+}
+  
+.pie-pagina a {
+    text-decoration: none;
+    color: #b0bec5;
+    transition: all 0.3s ease;
+}
+
+.pie-pagina p {
+    color: #b0bec5;
+    line-height: 1.8;
+}
+  
+.pie-pagina a:hover {
+    color: #1E88E5;
+    text-decoration: none;
+}
+
+.footer-text {
+    color: #b0bec5;
+    line-height: 1.8;
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links li {
+    margin-bottom: 10px;
+}
+
+.footer-contact {
+    line-height: 2;
+}
+
+.footer-contact i {
+    color: #1E88E5;
+    margin-right: 10px;
+}
+
+.logo-footer {
+    width: 180px;
+    margin-bottom: 20px;
+    filter: brightness(0) invert(1);
+}
+
+.footer-divider {
+    border-color: rgba(255,255,255,0.1);
+    margin: 30px 0;
+}
+
+.footer-copyright {
+    color: #90a4ae;
+    font-size: 14px;
+    margin: 0;
+}
+
+.iconos-redes {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.iconos-redes a {
+    font-size: 24px;
+    color: #b0bec5;
+    transition: all 0.3s ease;
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.iconos-redes a:hover {
+    transform: translateY(-5px);
+    color: #1E88E5;
+    background: rgba(30, 136, 229, 0.1);
+}
+
+/* ========== RESPONSIVE - OPTIMIZADO PARA MÓVIL ========== */
+
+@media (max-width: 991px) {
+    .hero-title {
+        font-size: 32px;
+    }
+    
+    .section-title {
+        font-size: 28px;
+    }
+    
+    .content-box {
+        margin-top: 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        padding-top: 75px;
+    }
+    
+    .navbar-wave svg {
+        height: 20px;
+    }
+    
+    /* HERO - MÁS COMPACTO EN MÓVIL */
+    .hero-nosotros {
+        padding: 35px 15px;
+    }
+    
+    .hero-badge {
+        font-size: 12px;
+        padding: 6px 16px;
+        margin-bottom: 15px;
+    }
+    
+    .hero-title {
+        font-size: 24px;
+        margin-bottom: 15px;
+    }
+    
+    .hero-subtitle {
+        font-size: 14px;
+    }
+    
+    /* HISTORIA - MÁS COMPACTA */
+    .historia-section {
+        padding: 40px 0;
+    }
+    
+    .historia-content {
+        padding: 20px;
+    }
+    
+    .historia-content p {
+        font-size: 14px;
+        margin-bottom: 15px;
+    }
+    
+    /* CONFIANZA - MÁS COMPACTA EN MÓVIL */
+    .confianza-section {
+        padding: 40px 0;
+    }
+    
+    .wave-top svg,
+    .wave-bottom svg {
+        height: 30px;
+    }
+    
+    .section-header {
+        margin-bottom: 30px;
+    }
+    
+    .section-title {
+        font-size: 22px;
+        margin-bottom: 10px;
+    }
+    
+    .section-subtitle {
+        font-size: 14px;
+    }
+    
+    /* TARJETAS DE CONFIANZA - COMPACTAS */
+    .confianza-card {
+        padding: 20px 15px;
+        margin-bottom: 15px;
+    }
+    
+    .confianza-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 24px;
+        margin-bottom: 12px;
+    }
+    
+    .confianza-card h3 {
+        font-size: 16px;
+        margin-bottom: 8px;
+    }
+    
+    .confianza-card p {
+        font-size: 13px;
+    }
+    
+    /* MISIÓN Y VISIÓN - COMPACTA */
+    .mision-vision-section {
+        padding: 40px 0;
+    }
+    
+    .imagen-placeholder {
+        height: 250px;
+        margin-bottom: 20px;
+    }
+    
+    .placeholder-text i {
+        font-size: 48px;
+    }
+    
+    .placeholder-text p {
+        font-size: 14px;
+    }
+    
+    .content-box {
+        padding: 20px;
+        margin-top: 0;
+    }
+    
+    .icon-badge {
+        width: 50px;
+        height: 50px;
+        font-size: 24px;
+        margin-bottom: 15px;
+    }
+    
+    .content-box h2 {
+        font-size: 22px;
+        margin-bottom: 15px;
+    }
+    
+    .content-box p {
+        font-size: 14px;
+    }
+    
+    /* PROCESO TÉCNICO - MÁS COMPACTO */
+    .proceso-tecnico-section {
+        padding: 40px 0;
+    }
+    
+    .proceso-tecnico-card {
+        padding: 20px 15px;
+        margin-bottom: 15px;
+    }
+    
+    .proceso-numero {
+        width: 35px;
+        height: 35px;
+        font-size: 14px;
+        top: 10px;
+        right: 10px;
+    }
+    
+    .proceso-icono {
+        width: 50px;
+        height: 50px;
+        font-size: 24px;
+        margin-bottom: 12px;
+    }
+    
+    .proceso-tecnico-card h3 {
+        font-size: 17px;
+        margin-bottom: 10px;
+    }
+    
+    .proceso-tecnico-card > p {
+        font-size: 13px;
+        margin-bottom: 12px;
+    }
+    
+    .proceso-detalles li {
+        font-size: 12px;
+        padding: 4px 0 4px 16px;
+        margin-bottom: 4px;
+    }
+    
+    /* CTA FINAL - COMPACTA */
+    .cta-final-section {
+        padding: 40px 15px;
+    }
+    
+    .cta-title {
+        font-size: 22px;
+        margin-bottom: 15px;
+    }
+    
+    .cta-text {
+        font-size: 14px;
+        margin-bottom: 20px;
+    }
+    
+    .btn-cta {
+        width: 100%;
+        justify-content: center;
+        font-size: 16px;
+        padding: 14px 30px;
+    }
+    
+    /* FOOTER */
+    .footer-wave svg {
+        height: 40px;
+    }
+    
+    /* WHATSAPP */
+    .whatsapp-float {
+        padding: 10px 16px;
+        font-size: 13px;
+        bottom: 15px;
+        right: 15px;
+    }
+    
+    .whatsapp-float i {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: 22px;
+    }
+    
+    .section-title {
+        font-size: 20px;
+    }
+    
+    .imagen-placeholder {
+        height: 220px;
+    }
+    
+    .content-box h2 {
+        font-size: 20px;
+    }
+    
+    .cta-title {
+        font-size: 20px;
+    }
+    
+    .btn-cta {
+        font-size: 15px;
+        padding: 12px 25px;
+    }
+}

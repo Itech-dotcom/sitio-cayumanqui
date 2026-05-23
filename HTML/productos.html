@@ -1,0 +1,752 @@
+<!-- 
+    Autor: Isaac Fernández
+    fecha de creación: 26/07/2025
+    Última modificación: 07/08/2025
+-->
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo - Cayumanqui</title>
+    <link rel="icon" type="image/png" href="../Imagenes/favicon.png">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Slick Carousel CSS -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+    
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../CSS/productos.css">
+</head>
+
+<!-- Botón hacia arriba -->
+<button id="btn-top" title="Volver arriba">
+    ↑
+</button>
+
+<body>
+    <!-- Navbar con Wave -->
+    <nav class="navbar navbar-expand-lg custom-navbar">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="../index.html">
+                <img src="../Imagenes/Logo.png" alt="Logo Cayumanqui" class="logo">
+                <span class="d-none d-md-inline">AGUAS CAYUMANQUI</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="../index.html">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="productos.html">Catálogo</a>
+                    </li>
+                    <!--<li class="nav-item">
+                        <a class="nav-link active" href="rutas.html">Puntos de Venta</a>
+                    </li>-->
+                    <li class="nav-item">
+                        <a class="nav-link" href="nosotros.html">Acerca de Nosotros</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://wa.me/56984535592" target="_blank">
+                            <i class="fab fa-whatsapp"></i> Contactar
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- Wave del Navbar -->
+        <div class="navbar-wave">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 120" preserveAspectRatio="none">
+                <path fill="#F5F7FA" d="M0,96L60,90.7C120,85,240,75,360,74.7C480,75,600,85,720,96C840,107,960,117,1080,117.3C1200,117,1320,107,1380,101.3L1440,96L1440,120L1380,120C1320,120,1200,120,1080,120C960,120,840,120,720,120C600,120,480,120,360,120C240,120,120,120,60,120L0,120Z"/>
+            </svg>
+        </div>
+    </nav>
+
+    
+
+    <!-- Submenu Unificado -->
+    <div class="container mt-3 text-center">
+        <div class="dropdown">
+            <button class="btn btn-catalogo dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Ver Secciones del Catálogo
+            </button>
+            <ul class="dropdown-menu w-100 text-center">
+                <li><a class="dropdown-item" href="#dispensadores">Dispensadores</a></li>
+                <li><a class="dropdown-item" href="#bidones">Bidones</a></li>
+                <li><a class="dropdown-item" href="#hielos">Hielos</a></li>
+                <li><a class="dropdown-item" href="#racks">Racks</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Sección Intro Catálogo -->
+    <section class="catalogo-intro" data-aos="fade-up">
+        <div class="container">
+            <div class="catalogo-intro-inner">
+                <div class="catalogo-intro-icon">
+                    <i class="fas fa-droplet"></i>
+                </div>
+                <div class="catalogo-intro-text">
+                    <h2>En Aguas Cayumanqui nos preocupamos de que tengas el mejor servicio</h2>
+                    <p>Por eso ponemos a tu disposición toda nuestra línea de productos, para que puedas elegir la opción que mejor se adapte a ti, tu hogar o tu empresa. Explora el catálogo y encuentra lo que necesitas.</p>
+                </div>
+                <div class="catalogo-intro-stats">
+                    <div class="intro-stat">
+                        <i class="fas fa-award"></i>
+                        <span>Calidad Certificada</span>
+                    </div>
+                    <div class="intro-stat">
+                        <i class="fas fa-truck"></i>
+                        <span>Despacho a Domicilio</span>
+                    </div>
+                    <div class="intro-stat">
+                        <i class="fas fa-headset"></i>
+                        <span>Asesoría Personalizada</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--Sección de Dispensadores-->
+    <section id="dispensadores" class="py-5 text-center">
+        <h2 class="titulo">Dispensadores</h2>
+        <div class="container">
+            <div class="catalogo row justify-content-center">
+                <div class="col-6 col-lg-3 producto text-center mb-4">
+                    <img src="../img_catalogo/dispensadorbasico.png" alt="Dispensador de agua" class="img-fluid">
+                    <h4 class="titulo-producto">DISPENSADOR BÁSICO</h4>
+                    <p class="codigo">COD: D01</p>
+                    <p class="precio">A SOLO $7.500</p>
+                    <button class="btn-ver-detalles" data-producto="D01">Ver detalles</button>
+                </div>
+
+                <div class="col-6 col-lg-3 producto text-center mb-4">
+                    <img src="../img_catalogo/bombamanual.png" alt="Dispensador de agua" class="img-fluid">
+                    <h4 class="titulo-producto">BOMBA MANUAL</h4>
+                    <p class="codigo">COD: D02</p>
+                    <p class="precio">A SOLO $5.500</p>
+                    <button class="btn-ver-detalles" data-producto="D02">Ver detalles</button>
+                </div>
+
+                <div class="col-6 col-lg-3 producto text-center mb-4">
+                    <img src="../img_catalogo/sobremesa.png" alt="Dispensador de agua" class="img-fluid">
+                    <h4 class="titulo-producto">SOBREMESA COMPRESOR</h4>
+                    <p class="codigo">COD: D03</p>
+                    <p class="precio">$89.990 + 2 BIDONES</p>
+                    <button class="btn-ver-detalles" data-producto="D03">Ver detalles</button>
+                </div>
+
+                <div class="col-6 col-lg-3 producto text-center mb-4">
+                    <img src="../img_catalogo/sobremesa2.png" alt="Dispensador de agua" class="img-fluid">
+                    <h4 class="titulo-producto">SOBREMESA COMPRESOR</h4>
+                    <p class="codigo">COD: D04</p>
+                    <p class="precio">$89.990 + 2 BIDONES</p>
+                    <button class="btn-ver-detalles" data-producto="D04">Ver detalles</button>
+                </div>
+
+                <div class="col-6 col-lg-3 producto text-center mb-4">
+                    <img src="../img_catalogo/dispremiumfrigobar.png" alt="Dispensador de agua" class="img-fluid">
+                    <h4 class="titulo-producto">DISPENSADOR PREMIUM CON FRIGOBAR</h4>
+                    <p class="codigo">COD: D05</p>
+                    <p class="precio">A SOLO $130.000 INCLUYE 2 BIDONES</p>
+                    <button class="btn-ver-detalles" data-producto="D05">Ver detalles</button>
+                </div>
+
+                <div class="col-6 col-lg-3 producto text-center mb-4">
+                    <img src="../img_catalogo/dispremium.png" alt="Dispensador de agua" class="img-fluid">
+                    <h4 class="titulo-producto">DISPENSADOR PREMIUM</h4>
+                    <p class="codigo">COD: D06</p>
+                    <p class="precio">A SOLO $109.990 INCLUYE 2 BIDONES</p>
+                    <button class="btn-ver-detalles" data-producto="D06">Ver detalles</button>
+                </div>
+
+                <div class="col-6 col-lg-3 producto text-center mb-4">
+                    <img src="../img_catalogo/dispaguafriacaliente.png" alt="Dispensador de agua" class="img-fluid">
+                    <h4 class="titulo-producto">DISPENSADOR AGUA FRÍA Y CALIENTE</h4>
+                    <p class="codigo">COD: D07</p>
+                    <p class="precio">A SOLO $114.990 INCLUYE 2 BIDONES</p>
+                    <button class="btn-ver-detalles" data-producto="D07">Ver detalles</button>
+                </div>
+
+                <div class="col-6 col-lg-3 producto text-center mb-4">
+                    <img src="../img_catalogo/dispaguafriacaliente2.png" alt="Dispensador de agua" class="img-fluid">
+                    <h4 class="titulo-producto">DISPENSADOR AGUA FRÍA Y CALIENTE</h4>
+                    <p class="codigo">COD: D08</p>
+                    <p class="precio">A SOLO $118.000 INCLUYE 2 BIDONES</p>
+                    <button class="btn-ver-detalles" data-producto="D08">Ver detalles</button>
+                </div>
+
+                <div class="col-6 col-lg-3 producto text-center mb-4">
+                    <img src="../img_catalogo/dispaguafriacaliente3.png" alt="Dispensador de agua" class="img-fluid">
+                    <h4 class="titulo-producto">DISPENSADOR AGUA FRÍA Y CALIENTE</h4>
+                    <p class="codigo">COD: D09</p>
+                    <p class="precio">A SOLO $87.500 INCLUYE 2 BIDONES</p>
+                    <button class="btn-ver-detalles" data-producto="D09">Ver detalles</button>
+                </div>
+
+                <div class="col-6 col-lg-3 producto text-center mb-4">
+                    <img src="../img_catalogo/dispaguafriacaliente4.png" alt="Dispensador de agua" class="img-fluid">
+                    <h4 class="titulo-producto">DISPENSADOR AGUA FRÍA Y CALIENTE</h4>
+                    <p class="codigo">COD: D10</p>
+                    <p class="precio">A SOLO $95.500 INCLUYE 2 BIDONES</p>
+                    <button class="btn-ver-detalles" data-producto="D10">Ver detalles</button>
+                </div>
+
+                <div class="col-6 col-lg-3 producto text-center mb-4">
+                    <img src="../img_catalogo/bombausb.png" alt="Dispensador de agua" class="img-fluid">
+                    <h4 class="titulo-producto">BOMBA USB</h4>
+                    <p class="codigo">COD: D11</p>
+                    <p class="precio">A SOLO $7.500</p>
+                    <button class="btn-ver-detalles" data-producto="D11">Ver detalles</button>
+                </div>
+
+                <div class="col-6 col-lg-3 producto text-center mb-4">
+                    <img src="../img_catalogo/bombausb2.png" alt="Dispensador de agua" class="img-fluid">
+                    <h4 class="titulo-producto">BOMBA USB</h4>
+                    <p class="codigo">COD: D12</p>
+                    <p class="precio">A SOLO $15.000</p>
+                    <button class="btn-ver-detalles" data-producto="D12">Ver detalles</button>
+                </div>
+
+                <div class="col-6 col-lg-3 producto text-center mb-4">
+                    <img src="../img_catalogo/dispensadorceramico.png" alt="Dispensador de agua" class="img-fluid">
+                    <h4 class="titulo-producto">DISPENSADOR CERÁMICO</h4>
+                    <p class="codigo">COD: D13</p>
+                    <p class="precio">A SOLO $35.000</p>
+                    <button class="btn-ver-detalles" data-producto="D13">Ver detalles</button>
+                </div>
+
+                <div class="col-6 col-lg-3 producto text-center mb-4">
+                    <img src="../img_catalogo/sobremesa3.png" alt="Dispensador de agua" class="img-fluid">
+                    <h4 class="titulo-producto">DISPENSADOR SOBREMESA</h4>
+                    <p class="codigo">COD: D14</p>
+                    <p class="precio">$60.000 + 2 BIDONES</p>
+                    <button class="btn-ver-detalles" data-producto="D14">Ver detalles</button>
+                </div>
+
+                <div class="col-6 col-lg-3 producto text-center mb-4">
+                    <img src="../img_catalogo/sobremesa4.png" alt="Dispensador de agua" class="img-fluid">
+                    <h4 class="titulo-producto">DISPENSADOR SOBREMESA</h4>
+                    <p class="codigo">COD: D15</p>
+                    <p class="precio">$60.000 + 2 BIDONES</p>
+                    <button class="btn-ver-detalles" data-producto="D15">Ver detalles</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--Sección de Bidones-->
+    <section id="bidones" class="py-5 text-center">
+        <h3 class="titulo">Bidones</h3>
+        <div class="container">
+            <div class="catalogo row justify-content-center">
+                <div class="col-5 col-lg-3 producto text-center mb-4">
+                    <img src="../img_catalogo/bidon20lt.png" alt="bidon20lt" class="img-fluid">
+                    <h4 class="titulo-producto">Bidón 20 LT</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--Sección de Hielos-->
+    <section id="hielos" class="py-5 text-center">
+        <h3 class="titulo">Hielos</h3>
+        <div class="container">
+            <div class="catalogo row justify-content-center">
+                <div class="col-6 col-lg-3 producto text-center mb-4">
+                    <img src="../img_catalogo/hielo.png" alt="Hielo por kilo" class="img-fluid">
+                    <h4>Hielo de kilo</h4>
+                </div>
+                <div class="col-6 col-lg-3 producto text-center mb-4">
+                    <img src="../img_catalogo/hielofrappe.png" alt="Hielo frappé" class="img-fluid">
+                    <h4>Hielo frappé</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--Racks-->
+    <section id="racks" class="py-5 text-center">
+        <h3 class="titulo">Racks</h3>
+        <div class="container">
+            <div class="catalogo-racks row justify-content-center">
+                <div class="col-6 col-lg-4 producto text-center mb-4">
+                    <img src="../img_catalogo/rack3.png" alt="Rack de 3" class="img-fluid">
+                    <h4 class="titulo-producto">RACK CHICO</h4>
+                    <p class="linea">Valido solo para negocios.</p>
+                </div>
+                <div class="col-6 col-lg-4 producto text-center mb-4">
+                    <img src="../img_catalogo/rack5.png" alt="Rack de 5" class="img-fluid">
+                    <h4 class="titulo-producto">RACK MEDIANO</h4>
+                    <p class="linea">Valido solo para negocios.</p>
+                </div>
+                <div class="col-6 col-lg-4 producto text-center mb-4">
+                    <img src="../img_catalogo/rack10.png" alt="Rack de 10" class="img-fluid">
+                    <h4 class="titulo-producto">RACK GRANDE</h4>
+                    <p class="linea">Válido sólo para negocios.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--Botón de whatsapp-->
+    <a href="https://wa.me/56952281586?text=Hola!%20Quiero%20hacer%20un%20pedido%20de%20agua%20purificada." target="_blank" class="whatsapp-float">
+        <i class="fa-brands fa-whatsapp"></i> Realizar pedido
+    </a>
+
+    <!-- Modal de detalles -->
+    <div id="modal-detalles" class="modal fade" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content text-start">
+                <div class="modal-header">
+                    <h5 class="modal-title">Características del Producto</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body" id="contenido-modal">
+                    <!-- Se carga dinámicamente -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <a href="https://wa.me/56952281586?text=Hola!%20Me%20interesa%20este%20producto." target="_blank" class="btn btn-success">
+                        <i class="fa-brands fa-whatsapp"></i> Consultar por WhatsApp
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <!-- Wave del Footer -->
+        <div class="footer-wave">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 120" preserveAspectRatio="none">
+                <path fill="#263238" d="M0,96L60,90.7C120,85,240,75,360,74.7C480,75,600,85,720,96C840,107,960,117,1080,117.3C1200,117,1320,107,1380,101.3L1440,96L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z"/>
+            </svg>
+        </div>
+        
+        <div class="pie-pagina">
+            <div class="container py-5">
+                <div class="row g-4">
+                    <div class="col-md-4">
+                        <img src="../Imagenes/Logo.png" alt="Logo Cayumanqui" class="logo-footer">
+                        <p class="footer-text">
+                            Empresa dedicada a la distribución de agua purificada de alta calidad en las regiones de Bío Bío y Ñuble.
+                        </p>
+                        <div class="iconos-redes">
+                            <a href="#" target="_blank" aria-label="Facebook">
+                                <i class="fab fa-facebook"></i>
+                            </a>
+                            <a href="#" target="_blank" aria-label="Instagram">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="https://wa.me/56984535592" target="_blank" aria-label="WhatsApp">
+                                <i class="fab fa-whatsapp"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-4">
+                        <h5>Enlaces Rápidos</h5>
+                        <ul class="footer-links">
+                            <li><a href="../index.html">Inicio</a></li>
+                            <li><a href="productos.html">Catálogo de Productos</a></li>
+                            <!--<li><a href="rutas.html">Puntos de Venta</a></li>-->
+                            <li><a href="nosotros.html">Acerca de Nosotros</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="col-md-4">
+                        <h5>Contacto</h5>
+                        <p class="footer-contact">
+                            <i class="fas fa-phone"></i> +569 52281586<br>
+                            <i class="fas fa-phone"></i> +569 21829290<br>
+                            <i class="fas fa-envelope"></i> <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b0d1d7c5d1c3d4d5dcd3d1c9c5ddd1dec1c5d9f0d7ddd1d9dc9ed3dfdd">[email&#160;protected]</a><br>
+                            <i class="fas fa-map-marker-alt"></i> Av. Bernardo O'higgins Poniente 1780, Quillón, Ñuble<br>
+                            <i class="fas fa-certificate"></i> Res. Sanitaria: 2016439392
+                        </p>
+                    </div>
+                </div>
+                
+                <hr class="footer-divider">
+                
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <p class="footer-copyright">
+                            &copy; 2025 Aguas Cayumanqui. Todos los derechos reservados.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // Mostrar el botón al hacer scroll hacia abajo
+        window.onscroll = function () {
+            const btn = document.getElementById("btn-top");
+            if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+                btn.style.display = "block";
+            } else {
+                btn.style.display = "none";
+            }
+        };
+
+        // Volver al inicio al hacer clic
+        document.getElementById("btn-top").addEventListener("click", function () {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        });
+    </script>
+
+    <script>
+        const menu = document.getElementById('mainMenu');
+        const triggerPoint = menu.offsetTop;
+
+        window.addEventListener('scroll', () => {
+        if (window.scrollY > triggerPoint) {
+            menu.classList.add('fixed');
+        } else {
+            menu.classList.remove('fixed');
+        }
+        });
+    </script>
+
+    <script>
+        const detalles = {
+            D01: `
+            <h5 class="subtitulo">Características</h5>
+            <p>Material: Plástico</p>
+            <p>Dimensiones: 25 CM X 23 CM X 20 CM</p>
+            <p>Peso: 600 GR</p>
+            <ul>
+                <li>✔️ Fácil Armado</li>
+                <li>✔️ Liviano</li>
+                <li>✔️ Para Bidones de 10 LT, 12 LT y 20 LT</li>
+            </ul>
+            `,
+            D02: `
+            <h5 class="subtitulo">Características</h5>
+            <p>Material: Plástico</p>
+            <p>Colores: Blanco/Azul</p>
+            <ul>
+                <li>✔️ Fácil Armado</li>
+                <li>✔️ Liviano</li>
+                <li>✔️ Para Bidones de 10 LT, 12 LT y 20 LT</li>
+            </ul>
+            `,
+            D03: `
+            <h5 class="subtitulo">Características</h5>
+            <p>
+                Temperatura Agua Fría: 05°C a 10°C<br>
+                Temperatura Agua Caliente: 90°C a 95°C<br>
+                Dimensiones: 47 CM X 31 CM X 26 CM<br>
+                Peso: 10 KG<br>
+                Consumo Eléctrico: 550 W<br>
+                Almacenaje Agua Helada: 2500 CC<br>
+                Almacenaje Agua Caliente: 1500 CC<br>
+                Sistema de Enfriado: Compresor<br>
+                Color: Negro
+            </p>
+            <ul>
+                <li>✔️ Botones de Encendido y Apagado</li>
+                <li>✔️ Luces de Encendido en su Parte Frontal</li>
+                <li>✔️ Elaborado con Material Plástico de Alta Calidad</li>
+                <li>✔️ Liviano y Pequeño Para Usar en Cualquier Espacio</li>
+            </ul>
+            `,
+            D04: `
+            <h5 class="subtitulo">Características</h5>
+            <p>
+                Temperatura Agua Fría: 05°C a 10°C<br>
+                Temperatura Agua Caliente: 90°C a 95°C<br>
+                Dimensiones: 47 CM X 31 CM X 26 CM<br>
+                Peso: 10 KG<br>
+                Consumo Eléctrico: 550 W<br>
+                Almacenaje Agua Helada: 2500 CC<br>
+                Almacenaje Agua Caliente: 1500 CC<br>
+                Sistema de Enfriado: Compresor<br>
+                Color: Negro/Blanco
+            </p>
+            <ul>
+                <li>✔️ Botones de Encendido y Apagado</li>
+                <li>✔️ Luces de Encendido en su Parte Frontal</li>
+                <li>✔️ Elaborado con Material Plástico de Alta Calidad</li>
+                <li>✔️ Liviano y Pequeño Para Usar en Cualquier Espacio</li>
+            </ul>
+            `,
+            D05: `
+            <h5 class="subtitulo">Características</h5>
+            <p>
+                Temperatura Agua Fría: 05°C a 10°C<br>
+                Temperatura Agua Caliente: 90°C a 95°C<br>
+                Dimensiones: 33 CM X 100 CM X 34 CM<br>
+                Peso: 15 KG<br>
+                Consumo Eléctrico: 550 W<br>
+                Almacenaje Agua Helada: 2500 CC<br>
+                Almacenaje Agua Caliente: 1000 CC<br>
+                Sistema de Enfriado: Compresor
+            </p>
+            <ul>
+                <li>✔️ 2 Llaves, Agua Caliente y Agua Helada</li>
+                <li>✔️ Botones de Encendido y Apagado</li>
+                <li>✔️ Luces de Encendido en su Parte Frontal</li>
+                <li>✔️ Compartimiento Inferior Refrigerado</li>
+                <li>✔️ Botón de Seguridad para el Agua Caliente</li>
+            </ul>
+            `,
+            D06: `
+            <h5 class="subtitulo">Características</h5>
+            <p>
+                Temperatura Agua Fría: 05°C a 10°C<br>
+                Temperatura Agua Caliente: 90°C a 95°C<br>
+                Dimensiones: 33 CM X 100 CM X 34 CM<br>
+                Peso: 15 KG<br>
+                Consumo Eléctrico: 550 W<br>
+                Almacenaje Agua Helada: 2500 CC<br>
+                Almacenaje Agua Caliente: 1000 CC<br>
+                Sistema de Enfriado: Compresor
+            </p>
+            <ul>
+                <li>✔️ 3 Llaves: Agua Caliente, Helada y Temperatura Ambiente</li>
+                <li>✔️ Botones de Encendido y Apagado</li>
+                <li>✔️ Luces de Encendido en su Parte Frontal</li>
+                <li>✔️ Botón de Seguridad para el Agua Caliente</li>
+            </ul>
+            `,
+            D07: `
+            <h5 class="subtitulo">Características</h5>
+            <p>
+                Temperatura Agua Fría: 05°C a 10°C<br>
+                Temperatura Agua Caliente: 90°C a 95°C<br>
+                Dimensiones: 98 CM X 34 CM X 33 CM<br>
+                Peso: 16 KG<br>
+                Consumo Eléctrico: 550 W<br>
+                Almacenaje Agua Helada: 2500 CC<br>
+                Almacenaje Agua Caliente: 1000 CC<br>
+                Sistema de Enfriado: Compresor<br>
+                Color: Negro/Blanco
+            </p>
+            <ul>
+                <li>✔️ Botones de Encendido y Apagado</li>
+                <li>✔️ Luces de Encendido en su Parte Frontal</li>
+                <li>✔️ Elaboración con Material Plástico de Alta Calidad</li>
+                <li>✔️ Con Cajón Inferior</li>
+            </ul>
+            `,
+            D08: `
+            <h5 class="subtitulo">Características</h5>
+            <p>
+                Temperatura Agua Fría: 05°C a 10°C<br>
+                Temperatura Agua Caliente: 90°C a 95°C<br>
+                Dimensiones: 98 CM X 34 CM X 33 CM<br>
+                Peso: 14 KG<br>
+                Consumo Eléctrico: 550 W<br>
+                Almacenaje Agua Helada: 2500 CC<br>
+                Almacenaje Agua Caliente: 1000 CC<br>
+                Sistema de Enfriado: Compresor<br>
+                Color: Gris/negro
+            </p>
+            <ul>
+                <li>✔️ Botones de Encendido y Apagado</li>
+                <li>✔️ Luces de Encendido en su Parte Frontal</li>
+                <li>✔️ Elaboración con Material Plástico de Alta Calidad</li>
+                <li>✔️ Liviano y Pequeño Para Usar en Cualquier Espacio</li>
+            </ul>
+            `,
+            D09: `
+            <h5 class="subtitulo">Características</h5>
+            <p>
+                Temperatura Agua Fría: 10°C a 15°C<br>
+                Temperatura Agua Caliente: 90°C a 95°C<br>
+                Dimensiones: 98 CM X 34 CM X 33 CM<br>
+                Peso: 9 KG<br>
+                Consumo Eléctrico: 550 W<br>
+                Almacenaje Agua Helada: 1000 CC<br>
+                Almacenaje Agua Caliente: 1000 CC<br>
+                Sistema de Enfriado: Ventilador<br>
+                Color: Blanco
+            </p>
+            <ul>
+                <li>✔️ 3 Llaves: Agua Caliente, Helada y Temperatura Ambiente</li>
+                <li>✔️ Botones de Encendido y Apagado</li>
+                <li>✔️ Luces de Encendido en su Parte Frontal</li>
+                <li>✔️ Botón de Seguridad para el Agua Caliente</li>
+            </ul>
+            `,
+            D10: `
+            <h5 class="subtitulo">Características</h5>
+            <p>
+                Temperatura Agua Fría: 10°C a 10°C<br>
+                Temperatura Agua Caliente: 90°C a 95°C<br>
+                Dimensiones: 98 CM X 34 CM X 33 CM<br>
+                Peso: 9 KG<br>
+                Consumo Eléctrico: 550 W<br>
+                Almacenaje Agua Helada: 1000 CC<br>
+                Almacenaje Agua Caliente: 1000 CC<br>
+                Sistema de Enfriado: Ventilador<br>
+                Color: Grafito
+            </p>
+            <ul>
+                <li>✔️ Botones de Encendido y Apagado</li>
+                <li>✔️ Luces de Encendido en su Parte Frontal</li>
+                <li>✔️ Elaboración con Material Plástico de Alta Calidad</li>
+                <li>✔️ Con Cajón Inferior</li>
+            </ul>
+            `,
+            D11: `
+            <h5 class="subtitulo">Características</h5>
+            <p>
+                Material: Plástico<br>
+                Colores: Blanco / Negro / Verde
+            </p>
+            <ul>
+                <li>✔️ Fácil Armado</li>
+                <li>✔️ Liviano</li>
+                <li>✔️ Compatible con Bidones de 10 LT, 12 LT y 20 LT</li>
+            </ul>
+            `,
+            D12: `
+            <h5 class="subtitulo">Características</h5>
+            <p>
+                Material: ABS y Acero Inoxidable<br>
+                Colores: Negro<br>
+                Potencia: 5V / 4V
+            </p>
+            <ul>
+                <li>✔️ Fácil Armado</li>
+                <li>✔️ Liviano</li>
+                <li>✔️ Compatible con Bidones de 10 LT, 12 LT y 20 LT</li>
+            </ul>
+            `,
+            D13: `
+            <h5 class="subtitulo">Características</h5>
+            <p>
+                Material: Cerámica<br>
+                Dimensiones: 25 CM X 25 CM X 42 CM<br>
+                Peso: 2.7 KG
+            </p>
+            <ul>
+                <li>✔️ Fácil Armado</li>
+                <li>✔️ Liviano</li>
+                <li>✔️ Compatible con Bidones de 10 LT, 12 LT y 20 LT</li>
+                <li>✔️ Incluye Patas de Madera, Llave Ajustable y Espiga Plástica</li>
+            </ul>
+            `,
+            D14: `
+            <h5 class="subtitulo">Características</h5>
+            <p>
+                Temperatura Agua Fría: 10°C a 15°C<br>
+                Temperatura Agua Caliente: 90°C a 95°C<br>
+                Dimensiones: 29 CM X 39 CM X 29 CM<br>
+                Peso: 3.2 KG<br>
+                Consumo Eléctrico: 550 W<br>
+                Almacenaje Agua Helada: 1000 CC<br>
+                Almacenaje Agua Caliente: 1000 CC<br>
+                Sistema de Enfriado: Ventilador<br>
+                Color: Blanco
+            </p>
+            <ul>
+                <li>✔️ Botones de Encendido y Apagado</li>
+                <li>✔️ Luces de Encendido en su Parte Frontal</li>
+                <li>✔️ Elaborado con Material Plástico de Alta Calidad</li>
+                <li>✔️ Liviano y Pequeño Para Usar en Cualquier Espacio</li>
+            </ul>
+            `,
+            D15: `
+            <h5 class="subtitulo">Características</h5>
+            <p>
+                Temperatura Agua Fría: 10°C a 15°C<br>
+                Temperatura Agua Caliente: 90°C a 95°C<br>
+                Dimensiones: 31 CM X 42 CM X 41 CM<br>
+                Peso: 3.2 KG<br>
+                Consumo Eléctrico: 550 W<br>
+                Almacenaje Agua Helada: 1000 CC<br>
+                Almacenaje Agua Caliente: 1000 CC<br>
+                Sistema de Enfriado: Ventilador<br>
+                Color: Negro
+            </p>
+            <ul>
+                <li>✔️ Botones de Encendido y Apagado</li>
+                <li>✔️ Luces de Encendido en su Parte Frontal</li>
+                <li>✔️ Elaborado con Material Plástico de Alta Calidad</li>
+                <li>✔️ Liviano y Pequeño Para Usar en Cualquier Espacio</li>
+            </ul>
+            `
+        };
+
+        document.querySelectorAll('.btn-ver-detalles').forEach(btn => {
+            btn.addEventListener('click', () => {
+            const cod = btn.getAttribute('data-producto');
+            document.getElementById('contenido-modal').innerHTML = detalles[cod];
+            const modal = new bootstrap.Modal(document.getElementById('modal-detalles'));
+            modal.show();
+            });
+        });
+    </script>
+
+    <script>
+        // Efecto de aparición/desaparición de la barra deslizante
+        let lastScrollTop = 0;
+        const marqueeBar = document.getElementById('marqueeBar');
+        const scrollThreshold = 50;
+
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+            
+            if (Math.abs(currentScroll - lastScrollTop) > scrollThreshold) {
+                if (currentScroll > lastScrollTop && currentScroll > 100) {
+                    // Scroll hacia abajo - ocultar barra
+                    marqueeBar.classList.add('hidden');
+                } else {
+                    // Scroll hacia arriba - mostrar
+                    marqueeBar.classList.remove('hidden');
+                }
+                lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+            }
+        });
+
+        // Botón volver arriba
+        const btnTop = document.getElementById('btn-top');
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                btnTop.style.display = 'block';
+            } else {
+                btnTop.style.display = 'none';
+            }
+        });
+        btnTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
+
+    <!-- AOS Animation -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 800, once: true, offset: 60 });
+    </script>
+
+</body>
+</html>
